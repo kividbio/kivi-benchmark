@@ -1,0 +1,18 @@
+# Copy to terraform.tfvars (do not commit secrets).
+aws_region   = "us-east-1"
+project_name = "kivi-benchmark"
+key_name     = "my-ec2-keypair"
+
+# Restrict SSH to your IP, e.g. "203.0.113.10/32"
+ssh_cidr = "0.0.0.0/0"
+
+# Dragonfly-style topology
+server_instance_type = "c7gn.12xlarge"
+client_instance_type = "c7gn.16xlarge"
+
+# If c7gn.12xlarge has no capacity in an AZ, set this to an AZ AWS recommends (e.g. us-east-1f).
+# When unset, Terraform uses the region's "a" AZ (e.g. us-east-1a), not a random default-VPC subnet.
+# availability_zone = "us-east-1f"
+
+# Or pin an explicit subnet instead of availability_zone:
+# subnet_id = "subnet-xxxxxxxx"
