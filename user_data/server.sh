@@ -5,8 +5,13 @@ export DEBIAN_FRONTEND=noninteractive
 
 exec > >(tee /var/log/user-data-server.log) 2>&1
 
+# ── Pinned versions — update these when cutting a new benchmark run ──────────
+KIVIDB_VERSION="v0.1.12"
+KIVIDB_RELEASES_BASE="https://releases.kividb.io"
+# ─────────────────────────────────────────────────────────────────────────────
+
 apt-get update -y
-apt-get install -y git curl wget build-essential redis-server
+apt-get install -y wget redis-server   # curl already present on Ubuntu AMIs; git/build-essential no longer needed
 
 systemctl stop redis-server || true
 systemctl disable redis-server || true
@@ -16,30 +21,36 @@ cat >> /etc/security/limits.conf << 'LIMITS'
 * hard nofile 65535
 LIMITS
 
-# Optional: helps many concurrent benchmark connections
 sysctl -w net.core.somaxconn=65535 || true
 grep -q '^net.core.somaxconn' /etc/sysctl.conf || echo 'net.core.somaxconn = 65535' >> /etc/sysctl.conf
 
-sudo -u ubuntu -H bash << 'EOSU'
+sudo -u ubuntu -H bash << EOSU
 set -euo pipefail
 cd /home/ubuntu
-if [[ ! -d /home/ubuntu/.cargo ]]; then
-  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+# ── KiviDB: download pre-built binary ────────────────────────────────────────
+if [[ ! -x /home/ubuntu/kividb ]]; then
+  echo "Downloading KiviDB ${KIVIDB_VERSION}..."
+  curl -fsSL "${KIVIDB_RELEASES_BASE}/${KIVIDB_VERSION}/kividb-linux-aarch64.tar.gz" \
+    -o kividb-linux-aarch64.tar.gz
+  tar -xzf kividb-linux-aarch64.tar.gz
+  chmod +x kividb/kividb
+  mv kividb/kividb ./kividb
+  rm -rf kividb-linux-aarch64.tar.gz kividb/
 fi
-source /home/ubuntu/.cargo/env
-if [[ ! -d /home/ubuntu/kivi ]]; then
-  git clone https://github.com/kividbio/kivi
-fi
-cd /home/ubuntu/kivi
-git pull --ff-only || true
-cargo build --release
-cd /home/ubuntu
-DF_URL="https://github.com/dragonflydb/dragonfly/releases/latest/download/dragonfly-aarch64.tar.gz"
+echo "KiviDB ready: \$(./kividb --version 2>/dev/null || echo 'binary present')"
+
+# ── Dragonfly: download pre-built binary ─────────────────────────────────────
 if [[ ! -x /home/ubuntu/dragonfly-aarch64 ]]; then
-  wget -q "$DF_URL" -O dragonfly-aarch64.tar.gz
+  echo "Downloading Dragonfly..."
+  wget -q "https://github.com/dragonflydb/dragonfly/releases/latest/download/dragonfly-aarch64.tar.gz" \
+    -O dragonfly-aarch64.tar.gz
   tar -xzf dragonfly-aarch64.tar.gz
   chmod +x dragonfly-aarch64
+  rm -f dragonfly-aarch64.tar.gz
 fi
+echo "Dragonfly ready."
+
 EOSU
 
-echo "Server user-data finished. Kivi build + Dragonfly binary ready under /home/ubuntu."
+echo "Server user-data finished. KiviDB ${KIVIDB_VERSION} + Dragonfly binary ready under /home/ubuntu."

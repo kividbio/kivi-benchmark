@@ -105,11 +105,10 @@ sudo apt install -y git curl build-essential redis-server
 sudo systemctl stop redis-server
 sudo systemctl disable redis-server
 
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-source ~/.cargo/env
-
-git clone https://github.com/kividbio/kivi
-cd kivi && cargo build --release
+VERSION="v0.1.12"   # pin to the version being benchmarked
+curl -LO https://releases.kividb.io/${VERSION}/kividb-linux-aarch64.tar.gz
+tar -xzf kividb-linux-aarch64.tar.gz
+chmod +x kividb
 
 wget https://github.com/dragonflydb/dragonfly/releases/latest/download/dragonfly-aarch64.tar.gz
 tar -xzf dragonfly-aarch64.tar.gz
@@ -121,8 +120,7 @@ ulimit -n 65535
 Run **one server at a time**. Kill the previous process before starting the next.
 ```bash
 # Kivi (listens on 0.0.0.0:6380 by default, io_uring on Linux)
-cd ~/kivi
-KIVI_THREADS=48 ./target/release/kivi
+KIVI_THREADS=48 ./kividb
 
 # Dragonfly (stop Kivi first; binds to 6379)
 cd ~
