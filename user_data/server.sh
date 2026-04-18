@@ -35,8 +35,7 @@ if [[ ! -x /home/ubuntu/kividb ]]; then
     -o kividb-linux-aarch64.tar.gz
   tar -xzf kividb-linux-aarch64.tar.gz
   chmod +x kividb/kividb
-  mv kividb/kividb ./kividb
-  rm -rf kividb-linux-aarch64.tar.gz kividb/
+  rm -rf kividb-linux-aarch64.tar.gz
 fi
 echo "KiviDB ready: \$(./kividb --version 2>/dev/null || echo 'binary present')"
 

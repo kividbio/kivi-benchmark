@@ -1,10 +1,10 @@
-# Kivi / Dragonfly / Redis benchmark runbook (AWS)
+# KiviDB / Dragonfly / Redis benchmark runbook (AWS)
 
 This runbook aligns **instance types and topology** with the public **Dragonfly c7gn** numbers: Dragonfly on **c7gn.12xlarge** (48 vCPU) and **memtier_benchmark** on a separate **c7gn.16xlarge** in the **same Availability Zone**. Infrastructure is provisioned with Terraform under `terraform/`.
 
-## Kivi results (c7gn.12xlarge, this runbook)
+## KiviDB results (c7gn.12xlarge, this runbook)
 
-| Test | Kivi ops/sec | Dragonfly ops/sec | Redis ops/sec | Kivi vs Dragonfly | Kivi vs Redis |
+| Test | KiviDB ops/sec | Dragonfly ops/sec | Redis ops/sec | KiviDB vs Dragonfly | KiviDB vs Redis |
 |------|-------------|-------------------|---------------|-------------------|---------------|
 | Write-only (`ratio 1:0`, `-t 60 -c 20 -n 200000`) | ~3.2M | ~3.7M | ~205K | -12% | **+1,467%** |
 | Read-only (`ratio 0:1`, same) | ~4.4M | ~4.2M | ~215K | **+6%** | **+1,956%** |
@@ -119,10 +119,10 @@ ulimit -n 65535
 
 Run **one server at a time**. Kill the previous process before starting the next.
 ```bash
-# Kivi (listens on 0.0.0.0:6380 by default, io_uring on Linux)
+# KiviDB (listens on 0.0.0.0:6380 by default, io_uring on Linux)
 KIVI_THREADS=48 ./kividb
 
-# Dragonfly (stop Kivi first; binds to 6379)
+# Dragonfly (stop KiviDB first; binds to 6379)
 cd ~
 ./dragonfly-aarch64 --port 6379 --logtostderr
 
@@ -131,7 +131,7 @@ redis-server --bind 0.0.0.0 --port 6379 --protected-mode no \
   --io-threads 4 --io-threads-do-reads yes --daemonize no
 ```
 
-> **Why KIVI_THREADS=48?** Kivi spawns one OS thread per worker, each running
+> **Why KIVI_THREADS=48?** KiviDB spawns one OS thread per worker, each running
 > its own `io_uring` runtime with a dedicated `SO_REUSEPORT` listener. On a
 > 48-vCPU c7gn.12xlarge, setting 48 threads pins one thread per vCPU and
 > eliminates cross-thread accept contention. The kernel load-balances incoming
@@ -165,7 +165,7 @@ ping <server-private-ip>
 SERVER=$(terraform -chdir=/path/to/repo/terraform output -raw server_private_ip)
 ```
 
-### Kivi (port 6380)
+### KiviDB (port 6380)
 ```bash
 memtier_benchmark -s $SERVER -p 6380 --distinct-client-seed \
   --hide-histogram --ratio 1:0 -t 60 -c 20 -n 200000 \
@@ -240,7 +240,7 @@ workload shape. Key factors that affect numbers:
 
 Treat all published figures as **one controlled capture**, not a universal
 guarantee. The benchmark scripts, Terraform, and full raw output live in
-[**github.com/kividbio/kivi-benchmark**](https://github.com/kividbio/kivi-benchmark).
+[**github.com/kividbio/kividb-benchmark**](https://github.com/kividbio/kividb-benchmark).
 
 ---
 

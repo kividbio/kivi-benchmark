@@ -135,7 +135,7 @@ resource "aws_instance" "server" {
 
   tags = {
     Name = "${var.project_name}-server"
-    Role = "redis-dragonfly-kivi-server"
+    Role = "redis-dragonfly-kividb-server"
   }
 }
 

@@ -1,6 +1,6 @@
 # Copy to terraform.tfvars (do not commit secrets).
 aws_region   = "us-east-1"
-project_name = "kivi-benchmark"
+project_name = "kividb-benchmark"
 key_name     = "my-ec2-keypair"
 
 # Restrict SSH to your IP, e.g. "203.0.113.10/32"
