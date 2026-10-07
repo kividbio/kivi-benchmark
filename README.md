@@ -2,17 +2,34 @@
 
 This runbook aligns **instance types and topology** with the public **Dragonfly c7gn** numbers: Dragonfly on **c7gn.12xlarge** (48 vCPU) and **memtier_benchmark** on a separate **c7gn.16xlarge** in the **same Availability Zone**. Infrastructure is provisioned with Terraform under `terraform/`.
 
-## KiviDB results (c7gn.12xlarge, this runbook)
+## Results: KiviDB v1.0.5 vs Dragonfly v1.37.0 vs Redis 8.6
 
-| Test | KiviDB ops/sec | Dragonfly ops/sec | Redis ops/sec | KiviDB vs Dragonfly | KiviDB vs Redis |
-|------|-------------|-------------------|---------------|-------------------|---------------|
-| Write-only (`ratio 1:0`, `-t 60 -c 20 -n 200000`) | ~3.2M | ~3.7M | ~205K | -12% | **+1,467%** |
-| Read-only (`ratio 0:1`, same) | ~4.4M | ~4.2M | ~215K | **+6%** | **+1,956%** |
-| Pipelined read (`-c 5`, `--pipeline=10`) | ~17.1M | ~8.0M | ~874K | **+113%** | **+1,854%** |
+These are the numbers published on [kividb.io](https://kividb.io/#benchmark).
+
+**Setup:**
+- Server: **c7gn.12xlarge** (48 vCPU, Graviton3). Load generator: a separate **c7gn.16xlarge** in the **same Availability Zone**.
+- One store runs at a time, on the same host and with the same `memtier_benchmark` parameters.
+- KiviDB listens on port 6380; Dragonfly and Redis on 6379.
+- Each scenario uses `-t 60 -c 5 -n 200000 --pipeline=10` (5 clients per thread, pipeline depth 10).
+
+| Scenario | KiviDB ops/sec | Dragonfly ops/sec | Redis ops/sec | KiviDB vs Dragonfly | KiviDB vs Redis |
+|---|---:|---:|---:|---:|---:|
+| Pipelined write (SET, `--ratio 1:0`) | **18.5M** | 5.6M | 591K | **~3.3×** | **~31×** |
+| Pipelined read (GET, `--ratio 0:1`) | **25.9M** | 8.8M | 1.1M | **~2.9×** | **~24×** |
+| Mixed 1:1 (`--ratio 1:1`) | **27.9M** | 9.0M | 914K | **~3.1×** | **~31×** |
+
+| Latency | KiviDB | Dragonfly | Redis |
+|---|---:|---:|---:|
+| SET avg / p99 | **0.17 ms / 0.35 ms** | 0.52 ms / 3.71 ms | 4.93 ms / 20.22 ms |
+| GET avg / p99 | **0.16 ms / 0.32 ms** | 0.36 ms / 0.74 ms | 2.72 ms / 4.70 ms |
+| Mixed avg / p99 | **0.17 ms / 0.34 ms** | 0.37 ms / 0.79 ms | 3.27 ms / 5.59 ms |
 
 **Headline claims:**
-- **20× faster than Redis** on concurrent GET workloads (4.4M vs 215K ops/sec, 1,200 connections)
-- **2× faster than Dragonfly** on pipelined reads (17.1M vs 8.0M ops/sec, pipeline depth 10)
+- **Up to ~31× Redis 8.6 throughput:** pipelined SET (18.5M vs 591K ops/sec) and mixed 1:1 (27.9M vs 914K).
+- **~3× Dragonfly v1.37.0 throughput** across GET, SET and mixed: 3.3× SET, 2.9× GET, 3.1× mixed.
+- **0.35 ms p99 write latency**, against 20.22 ms on Redis 8.6 (58× lower) and 3.71 ms on Dragonfly (10× lower).
+
+The exact commands are in [section 5](#5-memtier-runs-from-client).
 
 ## Dragonfly-published reference (c7gn, memtier defaults unless noted)
 
@@ -22,13 +39,12 @@ This runbook aligns **instance types and topology** with the public **Dragonfly 
 | Read-only (`ratio 0:1`, same) | ~6M | ~271 | ~623 |
 | Pipelined read (`-c 5`, `--pipeline=10`) | ~8.9M | ~323 | ~839 |
 
-> **Note:** Dragonfly's published numbers are higher than what we observed in this
-> runbook (~3.7M SET, ~4.2M GET, ~8.0M pipelined). This is consistent with
-> run-to-run variance on AWS spot/on-demand capacity, NIC state, and kernel
-> scheduler differences across runs. We benchmark all three stores in the same
-> session on the same instance to ensure a fair comparison. Treat all published
-> figures — including Dragonfly's own — as **one controlled capture**, not a
-> universal guarantee.
+> **Note:** For the same pipelined-read command, Dragonfly publishes ~8.9M ops/sec. On
+> this runbook's hardware we measured Dragonfly v1.37.0 at 8.8M ops/sec, so our
+> Dragonfly runs match its own published figures. We benchmark all three stores in
+> the same session on the same instance, so the comparison is fair. Expect 5–15%
+> run-to-run variance from AWS capacity and NIC state. Treat every published figure,
+> including Dragonfly's own, as **one controlled capture**, not a universal guarantee.
 
 Commands from their write-up:
 ```bash
@@ -101,16 +117,26 @@ Wait until cloud-init finishes (Rust build on the server can take several minute
 SSH (see `terraform output ssh_server`).
 ```bash
 sudo apt update
-sudo apt install -y git curl build-essential redis-server
+sudo apt install -y git curl build-essential gpg lsb-release
+
+# Redis 8.6, from Redis's own apt repository (Ubuntu's redis-server is older).
+curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
+echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" \
+  | sudo tee /etc/apt/sources.list.d/redis.list
+sudo apt update
+apt-cache policy redis          # choose the 8.6.x version string listed here
+sudo apt install -y redis=<8.6.x version from above> redis-server=<same> redis-tools=<same>
 sudo systemctl stop redis-server
 sudo systemctl disable redis-server
 
-VERSION="v0.1.12"   # pin to the version being benchmarked
+# KiviDB v1.0.5, the version the published numbers were taken with.
+VERSION="v1.0.5"
 curl -LO https://releases.kividb.io/${VERSION}/kividb-linux-aarch64.tar.gz
 tar -xzf kividb-linux-aarch64.tar.gz
 chmod +x kividb
 
-wget https://github.com/dragonflydb/dragonfly/releases/latest/download/dragonfly-aarch64.tar.gz
+# Dragonfly v1.37.0, pinned rather than "latest" so the comparison is reproducible.
+wget https://github.com/dragonflydb/dragonfly/releases/download/v1.37.0/dragonfly-aarch64.tar.gz
 tar -xzf dragonfly-aarch64.tar.gz
 chmod +x dragonfly-aarch64
 
@@ -160,62 +186,41 @@ ping <server-private-ip>
 
 ---
 
-## 5. Nine memtier runs (from client)
+## 5. memtier runs (from client)
+
+These are the published scenarios: three workloads per store, all pipelined at depth 10. Run each store on its own, one at a time, on the same server.
+
 ```bash
 SERVER=$(terraform -chdir=/path/to/repo/terraform output -raw server_private_ip)
+PORT=6380   # KiviDB. Use 6379 for Dragonfly and Redis.
+STORE=kivi  # kivi | dragonfly | redis, for the output file names
+
+# Pipelined write (SET)
+memtier_benchmark -s $SERVER -p $PORT --ratio 1:0 -t 60 -c 5 -n 200000 \
+  --distinct-client-seed --hide-histogram --pipeline=10 \
+  > ${STORE}_set_pipelined.txt 2>&1
+
+# Pipelined read (GET)
+memtier_benchmark -s $SERVER -p $PORT --ratio 0:1 -t 60 -c 5 -n 200000 \
+  --distinct-client-seed --hide-histogram --pipeline=10 \
+  > ${STORE}_get_pipelined.txt 2>&1
+
+# Mixed 1:1
+memtier_benchmark -s $SERVER -p $PORT --ratio 1:1 -t 60 -c 5 -n 200000 \
+  --distinct-client-seed --hide-histogram --pipeline=10 \
+  > ${STORE}_mixed_pipelined.txt 2>&1
 ```
 
-### KiviDB (port 6380)
-```bash
-memtier_benchmark -s $SERVER -p 6380 --distinct-client-seed \
-  --hide-histogram --ratio 1:0 -t 60 -c 20 -n 200000 \
-  > kivi_writeonly.txt 2>&1
-
-memtier_benchmark -s $SERVER -p 6380 --distinct-client-seed \
-  --hide-histogram --ratio 0:1 -t 60 -c 20 -n 200000 \
-  > kivi_readonly.txt 2>&1
-
-memtier_benchmark -s $SERVER -p 6380 --ratio 0:1 -t 60 -c 5 \
-  -n 200000 --distinct-client-seed --hide-histogram --pipeline=10 \
-  > kivi_pipelined.txt 2>&1
-```
-
-### Dragonfly (port 6379)
-```bash
-memtier_benchmark -s $SERVER -p 6379 --distinct-client-seed \
-  --hide-histogram --ratio 1:0 -t 60 -c 20 -n 200000 \
-  > dragonfly_writeonly.txt 2>&1
-
-memtier_benchmark -s $SERVER -p 6379 --distinct-client-seed \
-  --hide-histogram --ratio 0:1 -t 60 -c 20 -n 200000 \
-  > dragonfly_readonly.txt 2>&1
-
-memtier_benchmark -s $SERVER -p 6379 --ratio 0:1 -t 60 -c 5 \
-  -n 200000 --distinct-client-seed --hide-histogram --pipeline=10 \
-  > dragonfly_pipelined.txt 2>&1
-```
-
-### Redis (port 6379)
-```bash
-memtier_benchmark -s $SERVER -p 6379 --distinct-client-seed \
-  --hide-histogram --ratio 1:0 -t 60 -c 20 -n 200000 \
-  > redis_writeonly.txt 2>&1
-
-memtier_benchmark -s $SERVER -p 6379 --distinct-client-seed \
-  --hide-histogram --ratio 0:1 -t 60 -c 20 -n 200000 \
-  > redis_readonly.txt 2>&1
-
-memtier_benchmark -s $SERVER -p 6379 --ratio 0:1 -t 60 -c 5 \
-  -n 200000 --distinct-client-seed --hide-histogram --pipeline=10 \
-  > redis_pipelined.txt 2>&1
-```
+Run the three commands for each of `STORE=kivi PORT=6380`, `STORE=dragonfly PORT=6379` and `STORE=redis PORT=6379`. Restart the server process between stores.
 
 ### Summarize all results
 ```bash
-grep -A5 "ALL STATS" kivi_writeonly.txt kivi_readonly.txt kivi_pipelined.txt
-grep -A5 "ALL STATS" dragonfly_writeonly.txt dragonfly_readonly.txt dragonfly_pipelined.txt
-grep -A5 "ALL STATS" redis_writeonly.txt redis_readonly.txt redis_pipelined.txt
+for s in kivi dragonfly redis; do
+  grep -A5 "ALL STATS" ${s}_set_pipelined.txt ${s}_get_pipelined.txt ${s}_mixed_pipelined.txt
+done
 ```
+
+The `Totals` line gives ops/sec and average latency. Use `p99 Latency` for the p99 figures in the results table.
 
 ---
 
@@ -252,3 +257,127 @@ tunable **`-t`** / **`--pipeline`**. Those require different instance types
 and memtier flags than this c7gn runbook; reproduce them by changing
 `server_instance_type` / `client_instance_type` and the memtier command
 lines to match the specific README row you care about.
+
+---
+
+# Vector search benchmark (KiviDB vs Redis Stack)
+
+Separate from the memtier KV runbook above: this benchmarks KiviDB's
+`FT.CREATE`/`FT.SEARCH` HNSW vector index against **Redis Stack Server**
+using [**vector-db-benchmark**](https://github.com/redis-performance/vector-db-benchmark)
+(the tool the wider industry uses for this comparison, not a KiviDB-only
+script) — same dataset, same HNSW parameters, same client, on the same
+single instance in the same run.
+
+**Repo pointer:** upstream `redis/vector-db-benchmark` didn't have a `kividb`
+engine — we added one and it merged as
+[PR #203](https://github.com/redis/vector-db-benchmark/pull/203) on
+2026-07-26. The numbers below run straight from that official repo, at the
+commit linked in Methodology.
+
+## Methodology
+
+| | |
+|---|---|
+| Tool | [`vector-db-benchmark`](https://github.com/redis/vector-db-benchmark/tree/31a28b5ae6d35da96de6d218ada209868a628b42), run at this commit |
+| Dataset | `glove-25-angular` — 1,183,514 vectors, 25-dim, cosine |
+| Index config | HNSW `M=16`, `EF_CONSTRUCTION=256` (`redis-m-16-ef-256`) |
+| Upload | 100 threads, batch size 64, unpipelined `HSET` per vector (matches the tool's real client — not a pipelined synthetic script) |
+| Search sweep | `ef` ∈ {64, 128, 256, 512}, `parallel` = 100 |
+| Instance | **AWS, `us-east-1`, one cluster placement group.** Server (KiviDB / Redis Stack, one at a time): `c7gn.12xlarge` (48 vCPU, Graviton, network-optimized). Client (benchmark driver): a **separate** `c7gn.12xlarge` instance — co-locating the driver with the server under test understates the server's real throughput (confirmed live: numbers on a shared, smaller instance were markedly worse for both engines). |
+| KiviDB | built from source at KiviDB HEAD, same CI run |
+| Redis Stack | `redis-stack-server` **7.4.0-v8** (bundles Redis engine 7.4.7 + RediSearch 2.10.20) from the official `packages.redis.io` apt repo, version-pinned — not `:latest` |
+
+This is the exact methodology KiviDB's own internal CI regression gate runs
+on every push to `main`/`master` and on demand. That workflow is the
+automated, reproducible source of truth for these numbers — provisions the
+server + client pair above, builds KiviDB and the driver from source on
+native arm64 runners, runs both engines, and tears both instances down.
+
+## Results
+
+Real run, 2026-07-27, on the topology above, against the official
+`redis/vector-db-benchmark` repo (`gh run view` job timestamps and result
+artifacts on file):
+
+| | KiviDB | Redis Stack | |
+|---|---:|---:|---|
+| Upload throughput (1.18M vectors) | **5,262 rec/s** | 2,605 rec/s | KiviDB 2.02× |
+| Total ingest time | **225.1 s** | 454.6 s | KiviDB 2.02× |
+| Search QPS, ef=64 | **42,360** | 2,508 | KiviDB 16.9× |
+| Search QPS, ef=128 | **36,023** | 2,265 | KiviDB 15.9× |
+| Search QPS, ef=256 | **23,409** | 1,563 | KiviDB 15.0× |
+| Search QPS, ef=512 | **13,229** | 988 | KiviDB 13.4× |
+| Recall, ef=64 | 0.9425 | 0.9115 | KiviDB higher at every tier |
+| Recall, ef=512 | 0.9977 | 0.9951 | KiviDB higher at every tier |
+| P50 latency, ef=64 | **1.91 ms** | 30.40 ms | KiviDB lower at every tier |
+| P95 latency, ef=64 | **4.52 ms** | 59.68 ms | KiviDB lower at every tier |
+
+KiviDB wins ingest, search QPS, recall, and latency simultaneously — not a
+tradeoff at any operating point in this sweep. A first run on our own fork of
+the benchmark tool, before this one, landed within a few percent of every
+number above — confirming it on official upstream ruled out anything
+fork-specific. Full per-tier P50/P95/precision breakdown is available on
+request from the run's result artifacts.
+
+## A real compatibility gap this surfaced, and its fix
+
+The published `vector-db-benchmark` client waits for indexing to finish by
+polling `FT.INFO` for RediSearch's `num_docs`/`percent_indexed` fields.
+KiviDB's `FT.INFO` doesn't expose those — it reports HNSW graph state
+directly as `hnsw_live_count`/`hnsw_compaction_in_progress` instead, because
+KiviDB builds each vector's HNSW entry synchronously inside the `HSET` that
+stores it (there is no async backfill to report on). A client that only
+understands `num_docs` sees it stuck at 0 and stalls until its own timeout —
+looking like a hung indexer when the data was actually already fully
+indexed.
+
+Fixed by the `kividb` engine added in
+[PR #203](https://github.com/redis/vector-db-benchmark/pull/203) (`src/bin/vector_db_benchmark/engine/kividb.rs`),
+merged upstream 2026-07-26, which polls the fields KiviDB actually reports
+instead, mirroring the existing `dragonfly`/`valkey` Redis-wire-compatible
+engines.
+
+## Reproducing
+
+The numbers above ran via KiviDB's own internal CI (builds from source,
+tears down after). To reproduce independently, you need TWO c7gn.12xlarge
+instances (server + client, same placement group) — running both roles on
+one box measures materially lower numbers for both engines (see
+Methodology). On the CLIENT instance:
+
+```bash
+git clone https://github.com/redis/vector-db-benchmark /tmp/vdb
+cd /tmp/vdb && git checkout 31a28b5ae6d35da96de6d218ada209868a628b42
+sudo apt-get install -y libhdf5-dev pkg-config dpkg-dev
+HDF5_DIR="/usr/lib/$(dpkg-architecture -qDEB_HOST_MULTIARCH)/hdf5/serial" \
+  cargo build --release --bin vector-db-benchmark
+```
+
+Two single-entry engines-files — the tool rejects `--engines` and
+`--engines-file` together, and one file with no name filter runs every
+entry in it, so a shared file can't select just one engine:
+
+```bash
+cat > kividb-engine.json << 'EOF'
+[{ "name": "kividb-glove25", "engine": "kividb", "connection_params": {},
+   "collection_params": { "hnsw_config": { "M": 16, "EF_CONSTRUCTION": 256 } },
+   "search_params": [
+     { "parallel": 100, "search_params": { "ef": 64 } },
+     { "parallel": 100, "search_params": { "ef": 128 } },
+     { "parallel": 100, "search_params": { "ef": 256 } },
+     { "parallel": 100, "search_params": { "ef": 512 } }
+   ],
+   "upload_params": { "parallel": 100, "batch_size": 64 } }]
+EOF
+# Same shape with "engine": "redis" for redisstack-engine.json.
+
+KIVIDB_PORT=6380 ./target/release/vector-db-benchmark --host <server-private-ip> \
+  --engines-file kividb-engine.json --datasets glove-25-angular --parallels 100 --skip-if-exists false
+REDIS_PORT=6381 ./target/release/vector-db-benchmark --host <server-private-ip> \
+  --engines-file redisstack-engine.json --datasets glove-25-angular --parallels 100 --skip-if-exists false
+```
+
+No Python, no venv, no `redis==4.6.0` RESP3 workaround needed anymore — the
+Rust tool's `redis` crate defaults to RESP2 like KiviDB, same as the old
+Python client needed the pin for.
