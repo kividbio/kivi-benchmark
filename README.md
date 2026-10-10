@@ -1,6 +1,6 @@
 # KiviDB / Dragonfly / Redis benchmark runbook (AWS)
 
-This runbook aligns **instance types and topology** with the public **Dragonfly c7gn** numbers: Dragonfly on **c7gn.12xlarge** (48 vCPU) and **memtier_benchmark** on a separate **c7gn.16xlarge** in the **same Availability Zone**. Infrastructure is provisioned with Terraform under `terraform/`.
+This runbook aligns **instance types and topology** with the public **Dragonfly c7gn** numbers: Dragonfly on **c7gn.12xlarge** (48 vCPU) and **memtier_benchmark** on a separate **c7gn.16xlarge** in the **same Availability Zone**. Infrastructure is provisioned with the Terraform in this repository; the engines are started and the runs made with the scripts under `scripts/`.
 
 ## Results: KiviDB v1.0.5 vs Dragonfly v1.37.0 vs Redis 8.6
 
@@ -29,7 +29,7 @@ These are the numbers published on [kividb.io](https://kividb.io/#benchmark).
 - **~3× Dragonfly v1.37.0 throughput** across GET, SET and mixed: 3.3× SET, 2.9× GET, 3.1× mixed.
 - **0.35 ms p99 write latency**, against 20.22 ms on Redis 8.6 (58× lower) and 3.71 ms on Dragonfly (10× lower).
 
-The exact commands are in [section 5](#5-memtier-runs-from-client).
+The exact commands these were taken with are in [section 5](#5-runs-from-the-client), under *The published capture*.
 
 ## Dragonfly-published reference (c7gn, memtier defaults unless noted)
 
@@ -76,7 +76,6 @@ export AWS_DEFAULT_REGION="us-east-1"
 
 ## 2. Provision instances
 ```bash
-cd terraform
 cp terraform.tfvars.example terraform.tfvars
 # Edit terraform.tfvars: key_name, ssh_cidr (recommended: your /32), region.
 
@@ -108,125 +107,141 @@ Note outputs:
 - Server: `/var/log/user-data-server.log`
 - Client: `/var/log/user-data-client.log`
 
-Wait until cloud-init finishes (Rust build on the server can take several minutes).
+Wait until cloud-init finishes on both (`cloud-init status --wait`). The client builds memtier from source, which takes a few minutes.
 
 ---
 
-## 3. On the server instance (c7gn.12xlarge)
+## 3. The server instance (c7gn.12xlarge)
 
-SSH (see `terraform output ssh_server`).
+`user_data/server.sh` installs the three engines at pinned versions and starts
+none of them. Its log, `/var/log/user-data-server.log`, ends with the version
+of each.
+
+| Engine | Version | Source |
+|---|---|---|
+| KiviDB | v1.0.5, default build | `releases.kividb.io` |
+| Dragonfly | v1.37.0 | its GitHub release |
+| Redis | the newest in Redis's apt repository, or the one pinned in `server.sh` | `packages.redis.io` |
+
+Start **one engine at a time** with `scripts/start-server.sh`. It stops
+whatever was running and checks that it is gone, starts the engine in an empty
+directory, and appends the exact command and the engine's version to
+`~/logs/launch.log`.
+
 ```bash
-sudo apt update
-sudo apt install -y git curl build-essential gpg lsb-release
-
-# Redis 8.6, from Redis's own apt repository (Ubuntu's redis-server is older).
-curl -fsSL https://packages.redis.io/gpg | sudo gpg --dearmor -o /usr/share/keyrings/redis-archive-keyring.gpg
-echo "deb [signed-by=/usr/share/keyrings/redis-archive-keyring.gpg] https://packages.redis.io/deb $(lsb_release -cs) main" \
-  | sudo tee /etc/apt/sources.list.d/redis.list
-sudo apt update
-apt-cache policy redis          # choose the 8.6.x version string listed here
-sudo apt install -y redis=<8.6.x version from above> redis-server=<same> redis-tools=<same>
-sudo systemctl stop redis-server
-sudo systemctl disable redis-server
-
-# KiviDB v1.0.5, the version the published numbers were taken with.
-VERSION="v1.0.5"
-curl -LO https://releases.kividb.io/${VERSION}/kividb-linux-aarch64.tar.gz
-tar -xzf kividb-linux-aarch64.tar.gz
-chmod +x kividb
-
-# Dragonfly v1.37.0, pinned rather than "latest" so the comparison is reproducible.
-wget https://github.com/dragonflydb/dragonfly/releases/download/v1.37.0/dragonfly-aarch64.tar.gz
-tar -xzf dragonfly-aarch64.tar.gz
-chmod +x dragonfly-aarch64
-
-ulimit -n 65535
+~/kivi-benchmark/scripts/start-server.sh kividb
+~/kivi-benchmark/scripts/start-server.sh dragonfly
+~/kivi-benchmark/scripts/start-server.sh redis
+~/kivi-benchmark/scripts/start-server.sh redis-cluster
 ```
 
-Run **one server at a time**. Kill the previous process before starting the next.
-```bash
-# KiviDB (listens on 0.0.0.0:6380 by default, io_uring on Linux)
-KIVI_THREADS=48 ./kividb
+What each is started with, on a 48-vCPU instance (all on port 6379, the
+cluster on 7000 upwards):
 
-# Dragonfly (stop KiviDB first; binds to 6379)
-cd ~
-./dragonfly-aarch64 --port 6379 --logtostderr
+| Engine | Command |
+|---|---|
+| KiviDB | `kividb --port 6379 --bind 0.0.0.0 --threads 46` |
+| Dragonfly | `dragonfly --port 6379 --bind 0.0.0.0 --proactor_threads 46 --dbfilename "" --logtostderr` |
+| Redis | `redis-server --port 6379 --bind 0.0.0.0 --protected-mode no --save "" --appendonly no --io-threads 8` |
+| Redis Cluster | 46 x `redis-server --port 70NN --cluster-enabled yes --save "" --appendonly no`, no replicas |
 
-# Redis (stop Dragonfly first; binds to 6379)
-redis-server --bind 0.0.0.0 --port 6379 --protected-mode no \
-  --io-threads 4 --io-threads-do-reads yes --daemonize no
-```
+The same for every engine:
 
-> **Why KIVI_THREADS=48?** KiviDB spawns one OS thread per worker, each running
-> its own `io_uring` runtime with a dedicated `SO_REUSEPORT` listener. On a
-> 48-vCPU c7gn.12xlarge, setting 48 threads pins one thread per vCPU and
-> eliminates cross-thread accept contention. The kernel load-balances incoming
-> connections across all 48 listeners at the NIC level.
+- **Persistence is off.** No snapshot and no append-only file.
+- **No memory limit**, and an empty dataset at the start.
+- **Threads.** KiviDB and Dragonfly get the same number, vCPUs minus two,
+  which is KiviDB's own default. Set `THREADS` to change it for both. KiviDB
+  takes its thread count from `--threads` only.
+- **Redis executes commands on one thread**, whatever `--io-threads` is. A
+  single Redis against a multi-threaded engine on 48 cores is one core against
+  many. `redis-cluster` is the comparison that gives Redis the whole machine:
+  one primary per core, and memtier in cluster mode.
+
+`scripts/stop-server.sh` stops everything and fails if anything is left
+running or listening.
 
 ---
 
-## 4. On the client instance (c7gn.16xlarge)
-```bash
-sudo apt update
-sudo apt install -y build-essential autoconf automake libpcre3-dev \
-  libevent-dev pkg-config zlib1g-dev libssl-dev git
+## 4. The client instance (c7gn.16xlarge)
 
-git clone https://github.com/RedisLabs/memtier_benchmark
-cd memtier_benchmark
-autoreconf -ivf
-./configure
-make -j$(nproc)
-sudo make install
-```
+`user_data/client.sh` builds `memtier_benchmark` from its newest release tag
+and installs `redis-cli`. Its log is `/var/log/user-data-client.log`.
 
-**Latency check** (same AZ; should be sub-millisecond):
+**Latency check** (same AZ; should be well under a millisecond):
 ```bash
 ping <server-private-ip>
 ```
 
 ---
 
-## 5. memtier runs (from client)
-
-These are the published scenarios: three workloads per store, all pipelined at depth 10. Run each store on its own, one at a time, on the same server.
+## 5. Runs (from the client)
 
 ```bash
-SERVER=$(terraform -chdir=/path/to/repo/terraform output -raw server_private_ip)
-PORT=6380   # KiviDB. Use 6379 for Dragonfly and Redis.
-STORE=kivi  # kivi | dragonfly | redis, for the output file names
+SERVER=<server-private-ip>
 
+# With the engine started on the server:
+~/kivi-benchmark/scripts/run-matrix.sh kividb    $SERVER 6379
+~/kivi-benchmark/scripts/run-matrix.sh dragonfly $SERVER 6379
+~/kivi-benchmark/scripts/run-matrix.sh redis     $SERVER 6379
+~/kivi-benchmark/scripts/run-matrix.sh redis-cluster $SERVER 7000 cluster
+```
+
+For each value size, `run-matrix.sh` empties the server, writes every key
+once, and then runs each scenario for a fixed time over the whole keyspace:
+
+| | |
+|---|---|
+| Value sizes | 100 bytes and 1 KB |
+| Pipeline depth | 1 (60 threads x 20 connections) and 16 (60 threads x 5 connections) |
+| Workloads | write-only, read-only, and 1 write to 10 reads |
+| Keys | 10 million, uniformly random |
+| Duration | 60 seconds a scenario, after the load |
+
+Two choices matter more than the rest:
+
+- **Scenarios are timed, not counted** (`--test-time`, not `-n`). With a
+  fixed number of requests, a fast engine is finished in seconds and is
+  measured while it is still warming up, and a slow one runs for minutes.
+- **The value size is always given.** memtier's default is 32 bytes, which is
+  the most flattering case for any engine.
+
+Results are written to `~/results/<label>/`: memtier's text and JSON output
+for every scenario, the server's memory and key count after each load
+(bytes per key), and `summary.csv`.
+
+### The published capture
+
+The numbers at the top of this page were taken before these scripts existed,
+with the commands below: 60 threads, 5 connections each, pipeline depth 10.
+
+```bash
 # Pipelined write (SET)
 memtier_benchmark -s $SERVER -p $PORT --ratio 1:0 -t 60 -c 5 -n 200000 \
-  --distinct-client-seed --hide-histogram --pipeline=10 \
-  > ${STORE}_set_pipelined.txt 2>&1
+  --distinct-client-seed --hide-histogram --pipeline=10
 
 # Pipelined read (GET)
 memtier_benchmark -s $SERVER -p $PORT --ratio 0:1 -t 60 -c 5 -n 200000 \
-  --distinct-client-seed --hide-histogram --pipeline=10 \
-  > ${STORE}_get_pipelined.txt 2>&1
+  --distinct-client-seed --hide-histogram --pipeline=10
 
 # Mixed 1:1
 memtier_benchmark -s $SERVER -p $PORT --ratio 1:1 -t 60 -c 5 -n 200000 \
-  --distinct-client-seed --hide-histogram --pipeline=10 \
-  > ${STORE}_mixed_pipelined.txt 2>&1
+  --distinct-client-seed --hide-histogram --pipeline=10
 ```
 
-Run the three commands for each of `STORE=kivi PORT=6380`, `STORE=dragonfly PORT=6379` and `STORE=redis PORT=6379`. Restart the server process between stores.
+Read them with these in mind:
 
-### Summarize all results
-```bash
-for s in kivi dragonfly redis; do
-  grep -A5 "ALL STATS" ${s}_set_pipelined.txt ${s}_get_pipelined.txt ${s}_mixed_pipelined.txt
-done
-```
-
-The `Totals` line gives ops/sec and average latency. Use `p99 Latency` for the p99 figures in the results table.
+- They fix the number of requests (60 million a run), so the faster the
+  engine, the shorter its run.
+- No value size is given, so values are memtier's 32-byte default.
+- KiviDB was started without `--threads` and so ran on its default, 46
+  threads on this instance; Dragonfly with its defaults; Redis as a single
+  instance with `--io-threads 4`.
 
 ---
 
 ## 6. Teardown
 ```bash
-cd terraform && terraform destroy
+terraform destroy
 ```
 
 ---
@@ -244,8 +259,7 @@ workload shape. Key factors that affect numbers:
   the same instance to control for environmental drift.
 
 Treat all published figures as **one controlled capture**, not a universal
-guarantee. The benchmark scripts, Terraform, and full raw output live in
-[**github.com/kividbio/kividb-benchmark**](https://github.com/kividbio/kividb-benchmark).
+guarantee. The scripts and the Terraform are in this repository.
 
 ---
 
