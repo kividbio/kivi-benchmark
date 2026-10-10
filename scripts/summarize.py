@@ -11,7 +11,7 @@ import sys
 
 directory = sys.argv[1]
 label = os.path.basename(os.path.normpath(directory))
-print("label,value_bytes,pipeline,ratio_set_get,ops_per_sec,avg_latency_ms,p50_ms,p99_ms,p99_9_ms,"
+print("label,value_bytes,pipeline,workload,ops_per_sec,avg_latency_ms,p50_ms,p99_ms,p99_9_ms,"
       "used_memory_bytes,keys,bytes_per_key")
 
 
@@ -32,20 +32,31 @@ def memory(size):
     return used, keys, per_key
 
 
-for path in sorted(glob.glob(os.path.join(directory, "d*_p*_r*.json"))):
-    match = re.match(r"d(\d+)_p(\d+)_r(\d+)-(\d+)\.json$", os.path.basename(path))
-    if not match:
-        continue
-    size, pipeline, sets, gets = match.groups()
+def scenarios():
+    """(path, value size, pipeline, workload) for every result file."""
+    for path in sorted(glob.glob(os.path.join(directory, "*.json"))):
+        name = os.path.basename(path)
+        match = re.match(r"d(\d+)_p(\d+)_r(\d+)-(\d+)\.json$", name)
+        if match:
+            size, pipeline, sets, gets = match.groups()
+            yield path, size, pipeline, f"{sets}:{gets}"
+            continue
+        # Multi-key commands: mset10_d100.json, mget10_d100.json
+        match = re.match(r"(m[sg]et\d+)_d(\d+)\.json$", name)
+        if match:
+            yield path, match.group(2), "1", match.group(1)
+
+
+for path, size, pipeline, workload in scenarios():
     try:
         totals = json.load(open(path))["ALL STATS"]["Totals"]
     except (OSError, ValueError, KeyError) as error:
-        print(f"{label},{size},{pipeline},{sets}:{gets},ERROR {error},,,,,,,")
+        print(f"{label},{size},{pipeline},{workload},ERROR {error},,,,,,,")
         continue
     percentiles = totals.get("Percentile Latencies", {})
     used, keys, per_key = memory(size)
     print(",".join([
-        label, size, pipeline, f"{sets}:{gets}",
+        label, size, pipeline, workload,
         f"{totals.get('Ops/sec', 0):.0f}",
         f"{totals.get('Average Latency', totals.get('Latency', 0)):.3f}",
         f"{percentiles.get('p50.00', 0):.3f}",

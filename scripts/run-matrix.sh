@@ -59,7 +59,8 @@ memory() { # size
       | awk -F: '{s += $NF} END {print "used_memory:" s}'
     redis-cli --cluster call "$SERVER:$PORT" dbsize | awk '{s += $NF} END {print "keys:" s}'
   else
-    cli info memory | grep -a "^used_memory:" | tr -d '\r'
+    # Not every engine reports used_memory (Garnet does not): leave it blank.
+    cli info memory | grep -a "^used_memory:" | tr -d '\r' || true
     echo "keys:$(cli dbsize | tr -d '\r')"
   fi > "$OUT/memory-$1.txt"
   cat "$OUT/memory-$1.txt"

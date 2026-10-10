@@ -135,6 +135,18 @@ directory, and appends the exact command and the engine's version to
 ~/kivi-benchmark/scripts/start-server.sh redis-cluster
 ```
 
+Valkey, KeyDB and Garnet are not installed by `user_data/server.sh`. Install
+them once with `scripts/install-more-engines.sh` (Valkey 9.1.2 from its
+binary package, KeyDB v6.3.4 built from its release tag, Garnet v2.2.1 on the
+.NET 10 runtime), and start them the same way:
+
+```bash
+~/kivi-benchmark/scripts/install-more-engines.sh
+~/kivi-benchmark/scripts/start-server.sh valkey
+~/kivi-benchmark/scripts/start-server.sh keydb
+~/kivi-benchmark/scripts/start-server.sh garnet
+```
+
 What each is started with, on a 48-vCPU instance (all on port 6379, the
 cluster on 7000 upwards):
 
@@ -144,6 +156,9 @@ cluster on 7000 upwards):
 | Dragonfly | `dragonfly --port 6379 --bind 0.0.0.0 --proactor_threads 46 --dbfilename "" --logtostderr` |
 | Redis | `redis-server --port 6379 --bind 0.0.0.0 --protected-mode no --save "" --appendonly no --io-threads 8` |
 | Redis Cluster | 46 x `redis-server --port 70NN --cluster-enabled yes --save "" --appendonly no`, no replicas |
+| Valkey | `valkey-server --port 6379 --bind 0.0.0.0 --protected-mode no --save "" --appendonly no --io-threads 8` |
+| KeyDB | `keydb-server --port 6379 --bind 0.0.0.0 --protected-mode no --save "" --appendonly no --server-threads 16` |
+| Garnet | `GarnetServer --port 6379 --bind 0.0.0.0 --index 1g` |
 
 The same for every engine:
 
@@ -155,10 +170,23 @@ The same for every engine:
 - **Redis executes commands on one thread**, whatever `--io-threads` is. A
   single Redis against a multi-threaded engine on 48 cores is one core against
   many. `redis-cluster` is the comparison that gives Redis the whole machine:
-  one primary per core, and memtier in cluster mode.
+  one primary per core, and memtier in cluster mode. Valkey is the same:
+  `--io-threads` moves socket I/O off the main thread, not command execution.
+- **KeyDB** gets 16 server threads (`KEYDB_THREADS`), and **Garnet** sizes its
+  own thread pool. Garnet's hash index is raised from its 128 MB default to
+  1 GB, for the 10 million keys of the matrix.
 
-`scripts/stop-server.sh` stops everything and fails if anything is left
-running or listening.
+**Core scaling.** `CORES=<n>` confines the engine to the first `n` CPUs with
+`taskset` and sets its thread or shard count to match:
+
+```bash
+CORES=4  ~/kivi-benchmark/scripts/start-server.sh kividb
+CORES=16 ~/kivi-benchmark/scripts/start-server.sh redis-cluster   # 16 primaries
+```
+
+`scripts/stop-server.sh` kills everything and fails if anything is left
+running or listening. Engines are killed, not asked to stop: the data is
+disposable, and an engine asked nicely may first write it all to disk.
 
 ---
 
@@ -207,7 +235,26 @@ Two choices matter more than the rest:
 
 Results are written to `~/results/<label>/`: memtier's text and JSON output
 for every scenario, the server's memory and key count after each load
-(bytes per key), and `summary.csv`.
+(bytes per key), and `summary.csv`. Garnet does not report `used_memory`, so
+its bytes-per-key column is empty.
+
+**Multi-key commands.** `run-multikey.sh` loads the same 10 million keys
+(100-byte values) and runs `MSET` and `MGET` of 10 keys a command for 60
+seconds each, at pipeline depth 1. Its rows are added to the same
+`summary.csv`, counted in commands a second, not keys. It is not for a
+cluster: ten random keys do not share a hash slot.
+
+```bash
+~/kivi-benchmark/scripts/run-multikey.sh kividb $SERVER 6379
+```
+
+**Core scaling.** With the engine started under `CORES=<n>`, a shorter matrix
+is enough to see the curve:
+
+```bash
+OUT=~/results/scale-kividb-8 DURATION=30 SIZES=100 PIPELINES=16 RATIOS="1:0 0:1" \
+  ~/kivi-benchmark/scripts/run-matrix.sh scale-kividb-8 $SERVER 6379
+```
 
 ### The published capture
 
