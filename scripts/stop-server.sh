@@ -4,9 +4,12 @@
 # One engine runs at a time. A process left behind from the previous run
 # would share the machine with the next engine, and with SO_REUSEPORT it can
 # even share its port, so "stopped" is checked, not assumed.
+#
+# Engines are killed, not asked to stop: the data is disposable, and an
+# engine asked nicely may first write gigabytes of it to disk as a snapshot.
 set -uo pipefail
 
-NAMES=(kividb redis-server dragonfly valkey-server)
+NAMES=(kividb redis-server dragonfly valkey-server keydb-server GarnetServer)
 
 running() {
   local name
@@ -16,15 +19,12 @@ running() {
   return 1
 }
 
-for name in "${NAMES[@]}"; do pkill -TERM -x "$name" 2>/dev/null; done
-for _ in $(seq 20); do
+for name in "${NAMES[@]}"; do pkill -KILL -x "$name" 2>/dev/null; done
+# A process holding tens of gigabytes takes a while to be torn down.
+for _ in $(seq 120); do
   running || break
   sleep 0.5
 done
-if running; then
-  for name in "${NAMES[@]}"; do pkill -KILL -x "$name" 2>/dev/null; done
-  sleep 1
-fi
 if running; then
   echo "stop-server: an engine is still running:" >&2
   for name in "${NAMES[@]}"; do pgrep -xa "$name" >&2; done
@@ -32,7 +32,7 @@ if running; then
 fi
 # Nothing may be listening on the ports the engines use (a killed io_uring
 # server can hold its sockets for a moment after the process is gone).
-for _ in $(seq 20); do
+for _ in $(seq 60); do
   ss -ltn 2>/dev/null | grep -Eq ':(6379|6380|70[0-9][0-9]) ' || break
   sleep 0.5
 done
