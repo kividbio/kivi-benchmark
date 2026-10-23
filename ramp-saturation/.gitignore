@@ -1,0 +1,4 @@
+.state/
+video/out/
+video/preview/
+*.log

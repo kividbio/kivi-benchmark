@@ -1,0 +1,1050 @@
+{
+ "uid": "ramp",
+ "title": "KiviDB vs Redis vs Dragonfly: latency, throughput, saturation",
+ "timezone": "browser",
+ "refresh": "5s",
+ "time": {
+  "from": "now-15m",
+  "to": "now"
+ },
+ "schemaVersion": 39,
+ "panels": [
+  {
+   "id": 1,
+   "type": "timeseries",
+   "title": "Throughput (requests/s, SET + GET)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 0,
+    "y": 0,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "sum(rate(client_requests_total{db=\"kividb\",status=\"ok\"}[20s]))",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "sum(rate(client_requests_total{db=\"redis\",status=\"ok\"}[20s]))",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "sum(rate(client_requests_total{db=\"dragonfly\",status=\"ok\"}[20s]))",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "sum(rate(client_requests_total{db=\"redis-cluster\",status=\"ok\"}[20s]))",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "reqps",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "id": 2,
+   "type": "timeseries",
+   "title": "Clients (concurrent connections)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 12,
+    "y": 0,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "sum(client_workers{db=\"kividb\"})",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "sum(client_workers{db=\"redis\"})",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "sum(client_workers{db=\"dragonfly\"})",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "sum(client_workers{db=\"redis-cluster\"})",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "short",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0,
+     "decimals": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "id": 3,
+   "type": "timeseries",
+   "title": "p50 latency (per request, or per pipelined batch)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 0,
+    "y": 8,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "histogram_quantile(0.50, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"kividb\",op=\"set\"}[20s])))",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "histogram_quantile(0.50, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"redis\",op=\"set\"}[20s])))",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "histogram_quantile(0.50, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"dragonfly\",op=\"set\"}[20s])))",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "histogram_quantile(0.50, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"redis-cluster\",op=\"set\"}[20s])))",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "s",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "id": 4,
+   "type": "timeseries",
+   "title": "p99 latency (per request, or per pipelined batch)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 12,
+    "y": 8,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "histogram_quantile(0.99, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"kividb\",op=\"set\"}[20s])))",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "histogram_quantile(0.99, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"redis\",op=\"set\"}[20s])))",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "histogram_quantile(0.99, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"dragonfly\",op=\"set\"}[20s])))",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "histogram_quantile(0.99, sum by (le) (rate(client_request_duration_seconds_bucket{db=\"redis-cluster\",op=\"set\"}[20s])))",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "s",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "id": 5,
+   "type": "timeseries",
+   "title": "Database CPU usage (8 vCPU each; the cluster averaged over its 4 VMs)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 0,
+    "y": 16,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "100 * (1 - avg(rate(node_cpu_seconds_total{job=\"db-nodes\",db=\"kividb\",mode=\"idle\"}[20s])))",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "100 * (1 - avg(rate(node_cpu_seconds_total{job=\"db-nodes\",db=\"redis\",mode=\"idle\"}[20s])))",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "100 * (1 - avg(rate(node_cpu_seconds_total{job=\"db-nodes\",db=\"dragonfly\",mode=\"idle\"}[20s])))",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "100 * (1 - avg(rate(node_cpu_seconds_total{job=\"db-nodes\",db=\"redis-cluster\",mode=\"idle\"}[20s])))",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "percent",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0,
+     "max": 100
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "id": 6,
+   "type": "timeseries",
+   "title": "Database memory used (VM)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 12,
+    "y": 16,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "sum(node_memory_MemTotal_bytes{job=\"db-nodes\",db=\"kividb\"} - node_memory_MemAvailable_bytes{job=\"db-nodes\",db=\"kividb\"})",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "sum(node_memory_MemTotal_bytes{job=\"db-nodes\",db=\"redis\"} - node_memory_MemAvailable_bytes{job=\"db-nodes\",db=\"redis\"})",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "sum(node_memory_MemTotal_bytes{job=\"db-nodes\",db=\"dragonfly\"} - node_memory_MemAvailable_bytes{job=\"db-nodes\",db=\"dragonfly\"})",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "sum(node_memory_MemTotal_bytes{job=\"db-nodes\",db=\"redis-cluster\"} - node_memory_MemAvailable_bytes{job=\"db-nodes\",db=\"redis-cluster\"})",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "bytes",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "id": 7,
+   "type": "timeseries",
+   "title": "Errors (requests/s)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 0,
+    "y": 24,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "sum(rate(client_requests_total{db=\"kividb\",status=\"error\"}[20s])) or vector(0)",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "sum(rate(client_requests_total{db=\"redis\",status=\"error\"}[20s])) or vector(0)",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "sum(rate(client_requests_total{db=\"dragonfly\",status=\"error\"}[20s])) or vector(0)",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "sum(rate(client_requests_total{db=\"redis-cluster\",status=\"error\"}[20s])) or vector(0)",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "reqps",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  },
+  {
+   "id": 8,
+   "type": "timeseries",
+   "title": "Load generator CPU (cores, of 16 on its two nodes; 1 min average)",
+   "datasource": {
+    "type": "prometheus",
+    "uid": "prometheus"
+   },
+   "gridPos": {
+    "x": 12,
+    "y": 24,
+    "w": 12,
+    "h": 8
+   },
+   "targets": [
+    {
+     "refId": "A",
+     "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"bench\",container=\"client\",pod=~\"client-kividb-.*\"}[1m]))",
+     "legendFormat": "KiviDB",
+     "range": true
+    },
+    {
+     "refId": "B",
+     "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"bench\",container=\"client\",pod=~\"client-redis-.*\"}[1m]))",
+     "legendFormat": "Redis",
+     "range": true
+    },
+    {
+     "refId": "C",
+     "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"bench\",container=\"client\",pod=~\"client-dragonfly-.*\"}[1m]))",
+     "legendFormat": "Dragonfly",
+     "range": true
+    },
+    {
+     "refId": "D",
+     "expr": "sum(rate(container_cpu_usage_seconds_total{namespace=\"bench\",container=\"client\",pod=~\"client-redis-cluster-.*\"}[1m]))",
+     "legendFormat": "Redis Cluster (4 x 2 vCPU)",
+     "range": true
+    }
+   ],
+   "fieldConfig": {
+    "defaults": {
+     "unit": "short",
+     "custom": {
+      "lineWidth": 2,
+      "fillOpacity": 0,
+      "showPoints": "never",
+      "spanNulls": true
+     },
+     "min": 0
+    },
+    "overrides": [
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "KiviDB"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#73BF69"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#F2495C"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Dragonfly"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#B877D9"
+        }
+       }
+      ]
+     },
+     {
+      "matcher": {
+       "id": "byName",
+       "options": "Redis Cluster (4 x 2 vCPU)"
+      },
+      "properties": [
+       {
+        "id": "color",
+        "value": {
+         "mode": "fixed",
+         "fixedColor": "#FF9830"
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "options": {
+    "legend": {
+     "displayMode": "list",
+     "placement": "bottom",
+     "calcs": [
+      "lastNotNull",
+      "max"
+     ]
+    },
+    "tooltip": {
+     "mode": "multi",
+     "sort": "desc"
+    }
+   }
+  }
+ ],
+ "tags": [
+  "ramp"
+ ]
+}
