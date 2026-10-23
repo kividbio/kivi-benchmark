@@ -1,0 +1,53 @@
+# kube-prometheus-stack values. Placeholders __MYIP__ and __GRAFANA_PASSWORD__
+# are filled in by monitoring/install.sh.
+alertmanager:
+  enabled: false
+kubeStateMetrics:
+  enabled: true
+nodeExporter:
+  enabled: true
+prometheus-node-exporter:
+  tolerations:
+    - operator: Exists
+prometheusOperator:
+  nodeSelector: {kubernetes.azure.com/mode: system}
+kube-state-metrics:
+  nodeSelector: {kubernetes.azure.com/mode: system}
+prometheus:
+  prometheusSpec:
+    nodeSelector: {kubernetes.azure.com/mode: system}
+    scrapeInterval: 5s
+    evaluationInterval: 5s
+    retention: 7d
+    podMonitorSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+    resources:
+      requests: {cpu: 500m, memory: 2Gi}
+    additionalScrapeConfigs:
+      - job_name: db-nodes
+        scrape_interval: 5s
+        static_configs:
+          - targets: ["10.60.1.10:9100"]
+            labels: {db: kividb}
+          - targets: ["10.60.1.11:9100"]
+            labels: {db: redis}
+          - targets: ["10.60.1.12:9100"]
+            labels: {db: dragonfly}
+          - targets: ["10.60.1.20:9100", "10.60.1.21:9100", "10.60.1.22:9100", "10.60.1.23:9100"]
+            labels: {db: redis-cluster}
+grafana:
+  nodeSelector: {kubernetes.azure.com/mode: system}
+  adminPassword: "__GRAFANA_PASSWORD__"
+  service:
+    type: LoadBalancer
+    port: 80
+    loadBalancerSourceRanges: ["__MYIP__/32"]
+  grafana.ini:
+    dashboards:
+      default_home_dashboard_path: /tmp/dashboards/ramp.json
+    analytics: {check_for_updates: false, reporting_enabled: false}
+  sidecar:
+    dashboards:
+      enabled: true
+      label: grafana_dashboard
+      searchNamespace: monitoring
