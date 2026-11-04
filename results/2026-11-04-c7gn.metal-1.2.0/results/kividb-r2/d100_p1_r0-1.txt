@@ -1,0 +1,207 @@
+Json file /home/ubuntu/results/kividb-r2/d100_p1_r0-1.json created...
+Writing results to stdout
+[RUN #1] Preparing benchmark client...
+[RUN #1] Launching threads now...
+[RUN #1 3%,   1 secs] 60 threads 20 conns:     3055364 ops, 3049162 (avg: 3049162) ops/sec, 415.51MB/sec (avg: 415.51MB/sec),  0.39 (avg:  0.39) msec latency
+warning: high CPU on thread 0: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 1: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 2: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 3: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 4: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 5: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 6: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 7: 99.9% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 8: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 9: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 10: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 11: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 12: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 13: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 14: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 15: 99.9% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 16: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 17: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 18: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 19: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 20: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 21: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 22: 99.9% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 23: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 24: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 25: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 26: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 27: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 28: 99.9% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 29: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 30: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 31: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 32: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 33: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 34: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 35: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 36: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 37: 99.9% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 38: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 39: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 40: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 41: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 42: 99.8% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 43: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 44: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 45: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 46: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 47: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 48: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 49: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 50: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 51: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 52: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 53: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 54: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 55: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 56: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 57: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 58: 100.0% of a core (threshold 95.0%) - results may be unreliable
+
+warning: high CPU on thread 59: 100.0% of a core (threshold 95.0%) - results may be unreliable
+[RUN #1 7%,   2 secs] 60 threads 20 conns:     6101508 ops, 3044801 (avg: 3046983) ops/sec, 414.91MB/sec (avg: 415.21MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 10%,   3 secs] 60 threads 20 conns:     9147269 ops, 3044856 (avg: 3046274) ops/sec, 414.92MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 13%,   4 secs] 60 threads 20 conns:    12193600 ops, 3045466 (avg: 3046072) ops/sec, 415.00MB/sec (avg: 415.09MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 17%,   5 secs] 60 threads 20 conns:    15240305 ops, 3045949 (avg: 3046048) ops/sec, 415.07MB/sec (avg: 415.08MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 20%,   6 secs] 60 threads 20 conns:    18287833 ops, 3046674 (avg: 3046152) ops/sec, 415.17MB/sec (avg: 415.10MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 23%,   7 secs] 60 threads 20 conns:    21335042 ops, 3046313 (avg: 3046175) ops/sec, 415.12MB/sec (avg: 415.10MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 27%,   8 secs] 60 threads 20 conns:    24382437 ops, 3046535 (avg: 3046220) ops/sec, 415.15MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 30%,   9 secs] 60 threads 20 conns:    27429978 ops, 3046636 (avg: 3046266) ops/sec, 415.16MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 33%,  10 secs] 60 threads 20 conns:    30477286 ops, 3046412 (avg: 3046281) ops/sec, 415.13MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 37%,  11 secs] 60 threads 20 conns:    33524199 ops, 3046084 (avg: 3046263) ops/sec, 415.09MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 40%,  12 secs] 60 threads 20 conns:    36571075 ops, 3046087 (avg: 3046248) ops/sec, 415.09MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 43%,  13 secs] 60 threads 20 conns:    39618014 ops, 3046019 (avg: 3046231) ops/sec, 415.08MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 47%,  14 secs] 60 threads 20 conns:    42664942 ops, 3045953 (avg: 3046211) ops/sec, 415.07MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 50%,  15 secs] 60 threads 20 conns:    45712218 ops, 3046444 (avg: 3046226) ops/sec, 415.14MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 53%,  16 secs] 60 threads 20 conns:    48759104 ops, 3045950 (avg: 3046209) ops/sec, 415.07MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 57%,  17 secs] 60 threads 20 conns:    51805683 ops, 3045707 (avg: 3046180) ops/sec, 415.04MB/sec (avg: 415.10MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 60%,  18 secs] 60 threads 20 conns:    54854142 ops, 3047581 (avg: 3046257) ops/sec, 415.29MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 63%,  19 secs] 60 threads 20 conns:    57901092 ops, 3046078 (avg: 3046248) ops/sec, 415.09MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 67%,  20 secs] 60 threads 20 conns:    60948572 ops, 3046669 (avg: 3046269) ops/sec, 415.17MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 70%,  21 secs] 60 threads 20 conns:    63995908 ops, 3046428 (avg: 3046277) ops/sec, 415.13MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 73%,  22 secs] 60 threads 20 conns:    67043259 ops, 3046497 (avg: 3046287) ops/sec, 415.15MB/sec (avg: 415.12MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 77%,  23 secs] 60 threads 20 conns:    70090206 ops, 3046094 (avg: 3046278) ops/sec, 415.09MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 80%,  24 secs] 60 threads 20 conns:    73137337 ops, 3046229 (avg: 3046276) ops/sec, 415.11MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 83%,  25 secs] 60 threads 20 conns:    76184293 ops, 3046200 (avg: 3046273) ops/sec, 415.10MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 87%,  26 secs] 60 threads 20 conns:    79231963 ops, 3046731 (avg: 3046291) ops/sec, 415.18MB/sec (avg: 415.12MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 90%,  27 secs] 60 threads 20 conns:    82279090 ops, 3046249 (avg: 3046289) ops/sec, 415.11MB/sec (avg: 415.12MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 93%,  28 secs] 60 threads 20 conns:    85325587 ops, 3045772 (avg: 3046271) ops/sec, 415.05MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 97%,  29 secs] 60 threads 20 conns:    88372047 ops, 3045631 (avg: 3046249) ops/sec, 415.03MB/sec (avg: 415.11MB/sec),  0.39 (avg:  0.39) msec latency[RUN #1 100%,  30 secs]  0 threads 20 conns:    91392483 ops, 3045631 (avg: 3046297) ops/sec, 415.03MB/sec (avg: 415.12MB/sec),  0.39 (avg:  0.39) msec latency
+
+
+CPU Utilization Summary
+  Total CPU time:   1799.679s  (user 1164.568s, sys 635.111s)
+  Wall time:        30.003s
+  Cores used:       59.982   (avg 100.0% across 60 worker threads)
+  Peak utilization: 5999.2%
+warning: thread 0 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 1 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 2 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 3 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 4 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 5 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 6 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 7 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 8 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 9 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 10 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 11 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 12 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 13 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 14 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 15 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 16 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 17 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 18 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 19 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 20 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 21 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 22 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 23 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 24 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 25 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 26 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 27 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 28 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 29 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 30 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 31 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 32 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 33 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 34 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 35 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 36 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 37 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 38 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 39 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 40 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 41 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 42 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 43 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 44 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 45 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 46 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 47 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 48 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 49 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 50 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 51 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 52 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 53 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 54 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 55 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 56 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 57 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 58 averaged 99.9% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+warning: thread 59 averaged 100.0% of a core over the run (threshold 95.0%) - memtier may be the bottleneck; results may be unreliable
+Saving JSON output file: /home/ubuntu/results/kividb-r2/d100_p1_r0-1.json
+Json file closed.
+60        Threads
+20        Connections per thread
+30        Seconds
+
+
+ALL STATS
+============================================================================================================================
+Type         Ops/sec     Hits/sec   Misses/sec    Avg. Latency     p50 Latency     p99 Latency   p99.9 Latency       KB/sec 
+----------------------------------------------------------------------------------------------------------------------------
+Sets            0.00          ---          ---             ---             ---             ---             ---         0.00 
+Gets      3046316.38   3046316.38         0.00         0.39185         0.37500         0.65500         0.74300    425082.77 
+Waits           0.00          ---          ---             ---             ---             ---             ---          --- 
+Totals    3046316.38   3046316.38         0.00         0.39185         0.37500         0.65500         0.74300    425082.77 

@@ -1,0 +1,3576 @@
+{
+	"configuration":{
+		"server": "172.31.74.19"
+		,"port": 6379
+		,"uri": ""
+		,"unix socket": null
+		,"address family": "Unspecified"
+		,"protocol": "redis"
+		,"out_file": null
+		,"tls": "false"
+		,"cert": ""
+		,"key": ""
+		,"cacert": ""
+		,"tls_skip_verify": "false"
+		,"sni": null
+		,"client_stats": null
+		,"run_count": 1
+		,"debug": 0
+		,"requests": 0
+		,"rate_limit": 0
+		,"clients": 5
+		,"threads": 60
+		,"test_time": 30
+		,"ratio": "0:1"
+		,"pipeline": 16
+		,"transaction": "false"
+		,"data_size": 100
+		,"data_offset": 0
+		,"random_data": "false"
+		,"data_size_range": "0:0"
+		,"data_size_list": ""
+		,"data_size_pattern": "R"
+		,"expiry_range": "0:0"
+		,"data_import": null
+		,"data_verify": "false"
+		,"verify_only": "false"
+		,"generate_keys": "false"
+		,"key_prefix": "memtier-"
+		,"key_minimum":           1
+		,"key_maximum":    10000000
+		,"key_pattern": "R:R"
+		,"key_stddev": 0.000000
+		,"key_median": 0.000000
+		,"key_zipf_exp": 0.000000
+		,"reconnect_interval": 0
+		,"retry_on_error": "false"
+		,"max_retries": -1
+		,"retry_backoff_ms": 0
+		,"retry_backoff_factor": 0.000000
+		,"retry_on": ""
+		,"max_retry_queue": 0
+		,"failed_keys_file": ""
+		,"connection_timeout": 0
+		,"connection_stage_timeout": 30
+		,"thread_conn_start_min_jitter_micros": 0
+		,"thread_conn_start_max_jitter_micros": 0
+		,"multi_key_get": 0
+		,"authenticate": ""
+		,"select-db": 0
+		,"no-expiry": "false"
+		,"wait-ratio": "0:0"
+		,"num-slaves": "0:0"
+		,"wait-timeout": "0-0"
+		,"print-all-runs": "false"
+		,"read_preference": "primary"
+		,"read_preference_fallback": "error"
+		,"replica_clients": 0
+		,"replicas_per_shard": 0
+		,"read_servers": ""
+		,"prometheus-port": -1
+		,"prometheus-bind-addr": "127.0.0.1"
+		,"prometheus-run-labels": ""
+		,"prometheus-latency-buckets": "default"
+		}
+	,"run information":{
+		"Threads": 60
+		,"Connections per thread": 5
+		,"Seconds": 30
+		,"Format version": 2
+		}
+	,"ALL STATS":{
+		"Runtime":{
+			"Start time": 1793771042857
+			,"Finish time": 1793771072857
+			,"Total duration": 30000
+			,"Time unit": "MILLISECONDS"
+			,"Interrupted": "false"
+			}
+		,"CPU":{
+			"cpu_user_seconds": 933.434
+			,"cpu_sys_seconds": 334.909
+			,"cpu_total_seconds": 1268.342
+			,"cpu_wall_seconds": 30.001
+			,"cpu_cores_used": 42.277
+			,"avg_cpu_utilization_pct": 70.460
+			,"peak_cpu_utilization_pct": 4394.462
+			,"threads_counted": 60
+			,"Per Thread":{
+				"Thread 0":{
+					"user_seconds": 15.342
+					,"sys_seconds": 4.983
+					,"total_seconds": 20.325
+					,"wall_seconds": 30.001
+					,"cores_used": 0.677
+					}
+				,"Thread 1":{
+					"user_seconds": 15.540
+					,"sys_seconds": 5.381
+					,"total_seconds": 20.921
+					,"wall_seconds": 30.001
+					,"cores_used": 0.697
+					}
+				,"Thread 2":{
+					"user_seconds": 15.086
+					,"sys_seconds": 5.184
+					,"total_seconds": 20.270
+					,"wall_seconds": 30.001
+					,"cores_used": 0.676
+					}
+				,"Thread 3":{
+					"user_seconds": 15.367
+					,"sys_seconds": 5.815
+					,"total_seconds": 21.182
+					,"wall_seconds": 30.001
+					,"cores_used": 0.706
+					}
+				,"Thread 4":{
+					"user_seconds": 15.471
+					,"sys_seconds": 5.706
+					,"total_seconds": 21.177
+					,"wall_seconds": 30.001
+					,"cores_used": 0.706
+					}
+				,"Thread 5":{
+					"user_seconds": 15.434
+					,"sys_seconds": 5.654
+					,"total_seconds": 21.087
+					,"wall_seconds": 30.001
+					,"cores_used": 0.703
+					}
+				,"Thread 6":{
+					"user_seconds": 15.659
+					,"sys_seconds": 5.722
+					,"total_seconds": 21.381
+					,"wall_seconds": 30.001
+					,"cores_used": 0.713
+					}
+				,"Thread 7":{
+					"user_seconds": 15.606
+					,"sys_seconds": 5.345
+					,"total_seconds": 20.951
+					,"wall_seconds": 30.001
+					,"cores_used": 0.698
+					}
+				,"Thread 8":{
+					"user_seconds": 15.287
+					,"sys_seconds": 5.442
+					,"total_seconds": 20.729
+					,"wall_seconds": 30.001
+					,"cores_used": 0.691
+					}
+				,"Thread 9":{
+					"user_seconds": 15.443
+					,"sys_seconds": 5.601
+					,"total_seconds": 21.044
+					,"wall_seconds": 30.001
+					,"cores_used": 0.701
+					}
+				,"Thread 10":{
+					"user_seconds": 15.576
+					,"sys_seconds": 5.620
+					,"total_seconds": 21.197
+					,"wall_seconds": 30.001
+					,"cores_used": 0.707
+					}
+				,"Thread 11":{
+					"user_seconds": 15.688
+					,"sys_seconds": 5.776
+					,"total_seconds": 21.464
+					,"wall_seconds": 30.001
+					,"cores_used": 0.715
+					}
+				,"Thread 12":{
+					"user_seconds": 15.727
+					,"sys_seconds": 5.513
+					,"total_seconds": 21.241
+					,"wall_seconds": 30.001
+					,"cores_used": 0.708
+					}
+				,"Thread 13":{
+					"user_seconds": 15.411
+					,"sys_seconds": 5.615
+					,"total_seconds": 21.026
+					,"wall_seconds": 30.001
+					,"cores_used": 0.701
+					}
+				,"Thread 14":{
+					"user_seconds": 15.467
+					,"sys_seconds": 5.429
+					,"total_seconds": 20.897
+					,"wall_seconds": 30.001
+					,"cores_used": 0.697
+					}
+				,"Thread 15":{
+					"user_seconds": 15.349
+					,"sys_seconds": 5.471
+					,"total_seconds": 20.820
+					,"wall_seconds": 30.001
+					,"cores_used": 0.694
+					}
+				,"Thread 16":{
+					"user_seconds": 15.542
+					,"sys_seconds": 5.694
+					,"total_seconds": 21.236
+					,"wall_seconds": 30.001
+					,"cores_used": 0.708
+					}
+				,"Thread 17":{
+					"user_seconds": 15.255
+					,"sys_seconds": 5.940
+					,"total_seconds": 21.195
+					,"wall_seconds": 30.001
+					,"cores_used": 0.706
+					}
+				,"Thread 18":{
+					"user_seconds": 15.449
+					,"sys_seconds": 6.123
+					,"total_seconds": 21.573
+					,"wall_seconds": 30.001
+					,"cores_used": 0.719
+					}
+				,"Thread 19":{
+					"user_seconds": 15.901
+					,"sys_seconds": 5.671
+					,"total_seconds": 21.572
+					,"wall_seconds": 30.001
+					,"cores_used": 0.719
+					}
+				,"Thread 20":{
+					"user_seconds": 15.881
+					,"sys_seconds": 5.577
+					,"total_seconds": 21.458
+					,"wall_seconds": 30.001
+					,"cores_used": 0.715
+					}
+				,"Thread 21":{
+					"user_seconds": 15.639
+					,"sys_seconds": 5.520
+					,"total_seconds": 21.159
+					,"wall_seconds": 30.001
+					,"cores_used": 0.705
+					}
+				,"Thread 22":{
+					"user_seconds": 15.128
+					,"sys_seconds": 5.448
+					,"total_seconds": 20.576
+					,"wall_seconds": 30.001
+					,"cores_used": 0.686
+					}
+				,"Thread 23":{
+					"user_seconds": 15.397
+					,"sys_seconds": 5.364
+					,"total_seconds": 20.761
+					,"wall_seconds": 30.001
+					,"cores_used": 0.692
+					}
+				,"Thread 24":{
+					"user_seconds": 15.912
+					,"sys_seconds": 5.474
+					,"total_seconds": 21.386
+					,"wall_seconds": 30.001
+					,"cores_used": 0.713
+					}
+				,"Thread 25":{
+					"user_seconds": 15.774
+					,"sys_seconds": 5.578
+					,"total_seconds": 21.353
+					,"wall_seconds": 30.001
+					,"cores_used": 0.712
+					}
+				,"Thread 26":{
+					"user_seconds": 15.424
+					,"sys_seconds": 5.530
+					,"total_seconds": 20.954
+					,"wall_seconds": 30.001
+					,"cores_used": 0.698
+					}
+				,"Thread 27":{
+					"user_seconds": 15.206
+					,"sys_seconds": 6.128
+					,"total_seconds": 21.335
+					,"wall_seconds": 30.001
+					,"cores_used": 0.711
+					}
+				,"Thread 28":{
+					"user_seconds": 15.426
+					,"sys_seconds": 5.587
+					,"total_seconds": 21.014
+					,"wall_seconds": 30.001
+					,"cores_used": 0.700
+					}
+				,"Thread 29":{
+					"user_seconds": 15.738
+					,"sys_seconds": 5.902
+					,"total_seconds": 21.640
+					,"wall_seconds": 30.001
+					,"cores_used": 0.721
+					}
+				,"Thread 30":{
+					"user_seconds": 15.469
+					,"sys_seconds": 5.646
+					,"total_seconds": 21.115
+					,"wall_seconds": 30.001
+					,"cores_used": 0.704
+					}
+				,"Thread 31":{
+					"user_seconds": 15.284
+					,"sys_seconds": 5.603
+					,"total_seconds": 20.887
+					,"wall_seconds": 30.001
+					,"cores_used": 0.696
+					}
+				,"Thread 32":{
+					"user_seconds": 15.522
+					,"sys_seconds": 5.768
+					,"total_seconds": 21.291
+					,"wall_seconds": 30.001
+					,"cores_used": 0.710
+					}
+				,"Thread 33":{
+					"user_seconds": 15.520
+					,"sys_seconds": 5.556
+					,"total_seconds": 21.076
+					,"wall_seconds": 30.001
+					,"cores_used": 0.702
+					}
+				,"Thread 34":{
+					"user_seconds": 15.770
+					,"sys_seconds": 5.527
+					,"total_seconds": 21.298
+					,"wall_seconds": 30.001
+					,"cores_used": 0.710
+					}
+				,"Thread 35":{
+					"user_seconds": 15.457
+					,"sys_seconds": 5.460
+					,"total_seconds": 20.917
+					,"wall_seconds": 30.001
+					,"cores_used": 0.697
+					}
+				,"Thread 36":{
+					"user_seconds": 15.433
+					,"sys_seconds": 5.534
+					,"total_seconds": 20.967
+					,"wall_seconds": 30.001
+					,"cores_used": 0.699
+					}
+				,"Thread 37":{
+					"user_seconds": 15.551
+					,"sys_seconds": 5.815
+					,"total_seconds": 21.366
+					,"wall_seconds": 30.001
+					,"cores_used": 0.712
+					}
+				,"Thread 38":{
+					"user_seconds": 15.844
+					,"sys_seconds": 5.602
+					,"total_seconds": 21.446
+					,"wall_seconds": 30.001
+					,"cores_used": 0.715
+					}
+				,"Thread 39":{
+					"user_seconds": 15.692
+					,"sys_seconds": 5.403
+					,"total_seconds": 21.095
+					,"wall_seconds": 30.001
+					,"cores_used": 0.703
+					}
+				,"Thread 40":{
+					"user_seconds": 15.843
+					,"sys_seconds": 5.326
+					,"total_seconds": 21.169
+					,"wall_seconds": 30.001
+					,"cores_used": 0.706
+					}
+				,"Thread 41":{
+					"user_seconds": 15.478
+					,"sys_seconds": 5.492
+					,"total_seconds": 20.970
+					,"wall_seconds": 30.001
+					,"cores_used": 0.699
+					}
+				,"Thread 42":{
+					"user_seconds": 15.612
+					,"sys_seconds": 5.348
+					,"total_seconds": 20.960
+					,"wall_seconds": 30.001
+					,"cores_used": 0.699
+					}
+				,"Thread 43":{
+					"user_seconds": 15.833
+					,"sys_seconds": 5.641
+					,"total_seconds": 21.474
+					,"wall_seconds": 30.001
+					,"cores_used": 0.716
+					}
+				,"Thread 44":{
+					"user_seconds": 15.620
+					,"sys_seconds": 5.416
+					,"total_seconds": 21.036
+					,"wall_seconds": 30.001
+					,"cores_used": 0.701
+					}
+				,"Thread 45":{
+					"user_seconds": 15.730
+					,"sys_seconds": 5.576
+					,"total_seconds": 21.306
+					,"wall_seconds": 30.001
+					,"cores_used": 0.710
+					}
+				,"Thread 46":{
+					"user_seconds": 15.686
+					,"sys_seconds": 5.327
+					,"total_seconds": 21.013
+					,"wall_seconds": 30.001
+					,"cores_used": 0.700
+					}
+				,"Thread 47":{
+					"user_seconds": 15.752
+					,"sys_seconds": 5.842
+					,"total_seconds": 21.595
+					,"wall_seconds": 30.001
+					,"cores_used": 0.720
+					}
+				,"Thread 48":{
+					"user_seconds": 15.512
+					,"sys_seconds": 5.601
+					,"total_seconds": 21.114
+					,"wall_seconds": 30.001
+					,"cores_used": 0.704
+					}
+				,"Thread 49":{
+					"user_seconds": 15.252
+					,"sys_seconds": 5.520
+					,"total_seconds": 20.772
+					,"wall_seconds": 30.001
+					,"cores_used": 0.692
+					}
+				,"Thread 50":{
+					"user_seconds": 15.323
+					,"sys_seconds": 5.531
+					,"total_seconds": 20.853
+					,"wall_seconds": 30.001
+					,"cores_used": 0.695
+					}
+				,"Thread 51":{
+					"user_seconds": 15.743
+					,"sys_seconds": 5.363
+					,"total_seconds": 21.106
+					,"wall_seconds": 30.001
+					,"cores_used": 0.704
+					}
+				,"Thread 52":{
+					"user_seconds": 15.228
+					,"sys_seconds": 5.529
+					,"total_seconds": 20.758
+					,"wall_seconds": 30.001
+					,"cores_used": 0.692
+					}
+				,"Thread 53":{
+					"user_seconds": 15.746
+					,"sys_seconds": 5.762
+					,"total_seconds": 21.507
+					,"wall_seconds": 30.001
+					,"cores_used": 0.717
+					}
+				,"Thread 54":{
+					"user_seconds": 15.768
+					,"sys_seconds": 5.677
+					,"total_seconds": 21.445
+					,"wall_seconds": 30.001
+					,"cores_used": 0.715
+					}
+				,"Thread 55":{
+					"user_seconds": 15.362
+					,"sys_seconds": 5.244
+					,"total_seconds": 20.606
+					,"wall_seconds": 30.001
+					,"cores_used": 0.687
+					}
+				,"Thread 56":{
+					"user_seconds": 15.767
+					,"sys_seconds": 5.748
+					,"total_seconds": 21.515
+					,"wall_seconds": 30.001
+					,"cores_used": 0.717
+					}
+				,"Thread 57":{
+					"user_seconds": 15.649
+					,"sys_seconds": 5.603
+					,"total_seconds": 21.252
+					,"wall_seconds": 30.001
+					,"cores_used": 0.708
+					}
+				,"Thread 58":{
+					"user_seconds": 15.774
+					,"sys_seconds": 5.925
+					,"total_seconds": 21.699
+					,"wall_seconds": 30.001
+					,"cores_used": 0.723
+					}
+				,"Thread 59":{
+					"user_seconds": 16.075
+					,"sys_seconds": 5.723
+					,"total_seconds": 21.798
+					,"wall_seconds": 30.001
+					,"cores_used": 0.727
+					}
+				}
+			}
+		,"Sets":{
+			"Count": 0
+			,"Ops/sec": 0.00
+			,"Hits/sec": 0.00
+			,"Misses/sec": 0.00
+			,"Connection Errors/sec": 0.00
+			,"Connection Errors": 0
+			,"Latency": 0.000
+			,"Average Latency": 0.000
+			,"Accumulated Latency": 0
+			,"Min Latency": 0.000
+			,"Max Latency": 0.000
+			,"KB/sec": 0.00
+			,"KB/sec RX/TX": 0.00
+			,"KB/sec RX": 0.00
+			,"KB/sec TX": 0.00
+			,"Time-Serie":{
+				"0":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"1":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"2":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"3":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"4":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"5":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"6":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"7":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"8":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"9":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"10":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"11":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"12":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"13":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"14":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"15":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"16":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"17":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"18":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"19":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"20":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"21":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"22":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"23":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"24":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"25":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"26":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"27":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"28":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"29":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"30":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				}
+			,"Percentile Latencies":{
+				"p50.00": 0.007
+				,"p99.00": 0.007
+				,"p99.90": 0.007
+				,"Histogram log format":{
+					"Compressed Histogram": "HISTFAAAACF4nJNpmSzMwMDAyAABTFCaC0QoH3ZjsP8AEWAEAEsrA7A="
+					}
+				}
+			}
+		,"Gets":{
+			"Count": 631645184
+			,"Ops/sec": 21054571.37
+			,"Hits/sec": 21054571.37
+			,"Misses/sec": 0.00
+			,"Connection Errors/sec": 0.00
+			,"Connection Errors": 0
+			,"Latency": 0.213
+			,"Average Latency": 0.213
+			,"Accumulated Latency": 134807361
+			,"Min Latency": 0.048
+			,"Max Latency": 10.367
+			,"KB/sec": 2937952.91
+			,"KB/sec RX/TX": 2937952.91
+			,"KB/sec RX": 2220599.32
+			,"KB/sec TX": 717353.58
+			,"Time-Serie":{
+				"0":{
+					"Bytes RX": 2224440576
+					,"Bytes TX": 718593889
+					,"Count": 20596672
+					,"Average Latency": 0.219
+					,"Accumulated Latency": 4518914
+					,"Min Latency": 0.049
+					,"Max Latency": 10.336
+					,"p50.00": 0.199
+					,"p99.00": 0.943
+					,"p99.90": 2.447
+					}
+				,"1":{
+					"Bytes RX": 2282501376
+					,"Bytes TX": 737351373
+					,"Count": 21134272
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4491814
+					,"Min Latency": 0.049
+					,"Max Latency": 6.460
+					,"p50.00": 0.183
+					,"p99.00": 0.751
+					,"p99.90": 1.959
+					}
+				,"2":{
+					"Bytes RX": 2284573248
+					,"Bytes TX": 738019992
+					,"Count": 21153456
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4485866
+					,"Min Latency": 0.050
+					,"Max Latency": 5.203
+					,"p50.00": 0.167
+					,"p99.00": 0.751
+					,"p99.90": 2.143
+					}
+				,"3":{
+					"Bytes RX": 2289002112
+					,"Bytes TX": 739449949
+					,"Count": 21194464
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4478987
+					,"Min Latency": 0.050
+					,"Max Latency": 3.922
+					,"p50.00": 0.191
+					,"p99.00": 0.759
+					,"p99.90": 1.767
+					}
+				,"4":{
+					"Bytes RX": 2284785792
+					,"Bytes TX": 738089359
+					,"Count": 21155424
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4479250
+					,"Min Latency": 0.049
+					,"Max Latency": 6.172
+					,"p50.00": 0.191
+					,"p99.00": 0.719
+					,"p99.90": 1.551
+					}
+				,"5":{
+					"Bytes RX": 2292117696
+					,"Bytes TX": 740455854
+					,"Count": 21223312
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4472379
+					,"Min Latency": 0.049
+					,"Max Latency": 5.173
+					,"p50.00": 0.191
+					,"p99.00": 0.727
+					,"p99.90": 1.911
+					}
+				,"6":{
+					"Bytes RX": 2294220672
+					,"Bytes TX": 741140045
+					,"Count": 21242784
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4476856
+					,"Min Latency": 0.050
+					,"Max Latency": 4.788
+					,"p50.00": 0.183
+					,"p99.00": 0.775
+					,"p99.90": 1.863
+					}
+				,"7":{
+					"Bytes RX": 2276028288
+					,"Bytes TX": 735260307
+					,"Count": 21074336
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4494703
+					,"Min Latency": 0.048
+					,"Max Latency": 7.316
+					,"p50.00": 0.191
+					,"p99.00": 0.743
+					,"p99.90": 2.559
+					}
+				,"8":{
+					"Bytes RX": 2273920128
+					,"Bytes TX": 734581313
+					,"Count": 21054816
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4498246
+					,"Min Latency": 0.048
+					,"Max Latency": 5.185
+					,"p50.00": 0.199
+					,"p99.00": 0.807
+					,"p99.90": 1.367
+					}
+				,"9":{
+					"Bytes RX": 2264960448
+					,"Bytes TX": 731680381
+					,"Count": 20971856
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4499042
+					,"Min Latency": 0.049
+					,"Max Latency": 5.979
+					,"p50.00": 0.199
+					,"p99.00": 0.767
+					,"p99.90": 1.335
+					}
+				,"10":{
+					"Bytes RX": 2266584768
+					,"Bytes TX": 732207657
+					,"Count": 20986896
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4500570
+					,"Min Latency": 0.049
+					,"Max Latency": 4.960
+					,"p50.00": 0.175
+					,"p99.00": 0.695
+					,"p99.90": 1.591
+					}
+				,"11":{
+					"Bytes RX": 2266693632
+					,"Bytes TX": 732246947
+					,"Count": 20987904
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4498571
+					,"Min Latency": 0.049
+					,"Max Latency": 5.152
+					,"p50.00": 0.191
+					,"p99.00": 0.671
+					,"p99.90": 1.279
+					}
+				,"12":{
+					"Bytes RX": 2256268608
+					,"Bytes TX": 728875228
+					,"Count": 20891376
+					,"Average Latency": 0.216
+					,"Accumulated Latency": 4510280
+					,"Min Latency": 0.050
+					,"Max Latency": 3.014
+					,"p50.00": 0.183
+					,"p99.00": 0.711
+					,"p99.90": 1.423
+					}
+				,"13":{
+					"Bytes RX": 2293626240
+					,"Bytes TX": 740944262
+					,"Count": 21237280
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4476988
+					,"Min Latency": 0.050
+					,"Max Latency": 6.152
+					,"p50.00": 0.199
+					,"p99.00": 0.751
+					,"p99.90": 1.471
+					}
+				,"14":{
+					"Bytes RX": 2276157888
+					,"Bytes TX": 735300375
+					,"Count": 21075536
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4493755
+					,"Min Latency": 0.049
+					,"Max Latency": 6.179
+					,"p50.00": 0.191
+					,"p99.00": 0.703
+					,"p99.90": 1.607
+					}
+				,"15":{
+					"Bytes RX": 2267602560
+					,"Bytes TX": 732537773
+					,"Count": 20996320
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4506554
+					,"Min Latency": 0.048
+					,"Max Latency": 6.026
+					,"p50.00": 0.183
+					,"p99.00": 0.727
+					,"p99.90": 1.455
+					}
+				,"16":{
+					"Bytes RX": 2262682944
+					,"Bytes TX": 730947438
+					,"Count": 20950768
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4502873
+					,"Min Latency": 0.050
+					,"Max Latency": 6.257
+					,"p50.00": 0.175
+					,"p99.00": 0.695
+					,"p99.90": 1.423
+					}
+				,"17":{
+					"Bytes RX": 2288768832
+					,"Bytes TX": 739375469
+					,"Count": 21192304
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4479194
+					,"Min Latency": 0.049
+					,"Max Latency": 3.653
+					,"p50.00": 0.191
+					,"p99.00": 0.735
+					,"p99.90": 1.615
+					}
+				,"18":{
+					"Bytes RX": 2267443584
+					,"Bytes TX": 732485450
+					,"Count": 20994848
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4503016
+					,"Min Latency": 0.050
+					,"Max Latency": 6.456
+					,"p50.00": 0.191
+					,"p99.00": 0.807
+					,"p99.90": 2.207
+					}
+				,"19":{
+					"Bytes RX": 2284358976
+					,"Bytes TX": 737951363
+					,"Count": 21151472
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4486996
+					,"Min Latency": 0.049
+					,"Max Latency": 5.106
+					,"p50.00": 0.183
+					,"p99.00": 0.823
+					,"p99.90": 2.335
+					}
+				,"20":{
+					"Bytes RX": 2281896576
+					,"Bytes TX": 737154801
+					,"Count": 21128672
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4482142
+					,"Min Latency": 0.050
+					,"Max Latency": 4.559
+					,"p50.00": 0.159
+					,"p99.00": 0.695
+					,"p99.90": 1.655
+					}
+				,"21":{
+					"Bytes RX": 2276494848
+					,"Bytes TX": 735410754
+					,"Count": 21078656
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4491276
+					,"Min Latency": 0.048
+					,"Max Latency": 6.650
+					,"p50.00": 0.191
+					,"p99.00": 0.879
+					,"p99.90": 2.639
+					}
+				,"22":{
+					"Bytes RX": 2271098304
+					,"Bytes TX": 733667426
+					,"Count": 21028688
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4498113
+					,"Min Latency": 0.050
+					,"Max Latency": 7.165
+					,"p50.00": 0.167
+					,"p99.00": 0.711
+					,"p99.90": 1.575
+					}
+				,"23":{
+					"Bytes RX": 2285295552
+					,"Bytes TX": 738253313
+					,"Count": 21160144
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4484444
+					,"Min Latency": 0.048
+					,"Max Latency": 5.173
+					,"p50.00": 0.183
+					,"p99.00": 0.847
+					,"p99.90": 2.047
+					}
+				,"24":{
+					"Bytes RX": 2265924672
+					,"Bytes TX": 731994932
+					,"Count": 20980784
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4499756
+					,"Min Latency": 0.049
+					,"Max Latency": 5.176
+					,"p50.00": 0.183
+					,"p99.00": 0.703
+					,"p99.90": 1.671
+					}
+				,"25":{
+					"Bytes RX": 2275677504
+					,"Bytes TX": 735149328
+					,"Count": 21071088
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4487472
+					,"Min Latency": 0.049
+					,"Max Latency": 9.034
+					,"p50.00": 0.159
+					,"p99.00": 0.647
+					,"p99.90": 1.575
+					}
+				,"26":{
+					"Bytes RX": 2265153984
+					,"Bytes TX": 731746518
+					,"Count": 20973648
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4501927
+					,"Min Latency": 0.049
+					,"Max Latency": 4.975
+					,"p50.00": 0.191
+					,"p99.00": 0.743
+					,"p99.90": 1.735
+					}
+				,"27":{
+					"Bytes RX": 2264265792
+					,"Bytes TX": 731459558
+					,"Count": 20965424
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4505098
+					,"Min Latency": 0.049
+					,"Max Latency": 5.936
+					,"p50.00": 0.199
+					,"p99.00": 0.743
+					,"p99.90": 1.687
+					}
+				,"28":{
+					"Bytes RX": 2273023296
+					,"Bytes TX": 734287749
+					,"Count": 21046512
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4496515
+					,"Min Latency": 0.049
+					,"Max Latency": 6.136
+					,"p50.00": 0.183
+					,"p99.00": 0.759
+					,"p99.90": 2.399
+					}
+				,"29":{
+					"Bytes RX": 2261592576
+					,"Bytes TX": 730596292
+					,"Count": 20940672
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4503834
+					,"Min Latency": 0.048
+					,"Max Latency": 6.894
+					,"p50.00": 0.159
+					,"p99.00": 0.695
+					,"p99.90": 2.543
+					}
+				,"30":{
+					"Bytes RX": 518400
+					,"Bytes TX": 167508
+					,"Count": 4800
+					,"Average Latency": 0.399
+					,"Accumulated Latency": 1915
+					,"Min Latency": 0.057
+					,"Max Latency": 1.037
+					,"p50.00": 0.279
+					,"p99.00": 0.279
+					,"p99.90": 0.279
+					}
+				}
+			,"Percentile Latencies":{
+				"p50.00": 0.183
+				,"p99.00": 0.743
+				,"p99.90": 1.879
+				,"Histogram log format":{
+					"Compressed Histogram": "HISTFAAABAl4nC1RDUyVZRTmvN/33cu9lwsoII4Fu9Mo16yVQ5sN4xqps2Zqq7nM6qpLm21lW27mZh4z/kSg4Q+mGQ9/c5UuhsAEjR0hN41wYrpSJh0zA1zDQvoxjfWive/2nOec87zn2btz34c7U+Li3M64e8f8H4PjMLVrflzeb/cKIb0+BZ3njQyddfX2dQ8dbX6c+iaApi8TZM93yXzmbAY6jj2k7QencXN5pspPk+WPryZJ+ck0rb+Wxm196dzemYltl7Lw6deTpPevZJy+E9ae7hAXVgb5SleA60YC/Hd9CDvuBFGzKx6DrT5ubPK0+5IrVUdcPtbiau+fLo4OeHq71uPyUUd273N04EfDZR2GR1qMnW346DYHHx92MHjRyP4iow19pIdOkFY1E440Ea6eIPl8gDD0C6GskXR7OXH5Rv39TT65hgfXav8GvlVEqH5PDryiTYu09ylpmKN1uRh+UksW8p7F2DqXi3K4dbqUPag7suX2/bp7Gv/wiIxNl9GpciCLBzO0cbJWpeOjyXohQ0cycSNDNQ21KTqcjP4k7k3i1mStS5HqVOlJ1p/DXJEgO0O4HMRYkC+GuC2sHOZTQf0iwLXxOuyXK3786leN58IghuKl2c89Ph7zRD3p93TEk6s+LvDjAx/2ehh1ud3VZlePu7zV44set3i47EqFy/0OH3H0e0e7HFS70u2i1OXTDg45UungpsF2R4sdPungiiO1jowZ7jfcbfiMkV6jQwY1DkodjBpuMVxv5BMjuw3XGpw2OGe4027B4F/CLeJh4pvEBQbVhqsMlxi+QXyO5ALB4mWSa6TFBv+Q9JGcIz1M2kZymNBK+Jb0PEkXyVFiu7W9pPsJnxHbjR0n6bir2Ud6gLiUpIy0gPQgSSMBxCWkWwlbeLNuks2yi3gnoYCwXtZJjNfibVmHEuJCwkZ9B69jBdbwcqyx+IaslhW8kJfqS1iur2mMV8mLWKRP6zx9FjWERpJK4vfH3RrIDtFNWkwKkjqSYvtV0lLSCsImbNB3lUnWYyW/hS3CpKv4BVlp8VVdisWWrZZlWIaX5Xl5BlEswRJrkStz8RzP09kyi+dLnuTyTMnXBTpLZ/BM5HAeZiNfFmgecnSGPC4zOQc58oTN8/AoPyb5eFizkY0HdApnapakS5qmc4qkSipPlCRMkIlIsbVEmcgTNBFhDUtYQxLgoL0hTuQAAjYPcxhJ9s0ETdYQJ3Ci+BEPv3pwxWWL7LLPVnwa0KD44BNXXTZwYJSiSnDVqE3gsGHL2bNNnzrqhye+cSkTO0zRaCiSHrOclNjI3agmZndoBbDPxLEy1zp47NrccluzTAybKFMsFo2CYlE73ag7bh+NzImMN+96W2dQJJId+Q887Dy0"
+					}
+				}
+			}
+		,"Waits":{
+			"Count": 0
+			,"Ops/sec": 0.00
+			,"Hits/sec": 0.00
+			,"Misses/sec": 0.00
+			,"Connection Errors/sec": 0.00
+			,"Connection Errors": 0
+			,"Latency": 0.000
+			,"Average Latency": 0.000
+			,"Accumulated Latency": 0
+			,"Min Latency": 0.000
+			,"Max Latency": 0.000
+			,"KB/sec": 0.00
+			,"KB/sec RX/TX": 0.00
+			,"KB/sec RX": 0.00
+			,"KB/sec TX": 0.00
+			,"Time-Serie":{
+				"0":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"1":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"2":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"3":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"4":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"5":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"6":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"7":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"8":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"9":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"10":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"11":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"12":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"13":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"14":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"15":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"16":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"17":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"18":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"19":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"20":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"21":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"22":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"23":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"24":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"25":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"26":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"27":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"28":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"29":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				,"30":{
+					"Bytes RX": 0
+					,"Bytes TX": 0
+					,"Count": 0
+					}
+				}
+			,"Percentile Latencies":{
+				"p50.00": 0.007
+				,"p99.00": 0.007
+				,"p99.90": 0.007
+				,"Histogram log format":{
+					"Compressed Histogram": "HISTFAAAACF4nJNpmSzMwMDAyAABTFCaC0QoH3ZjsP8AEWAEAEsrA7A="
+					}
+				}
+			}
+		,"Totals":{
+			"Count": 631645184
+			,"Ops/sec": 21054571.37
+			,"Hits/sec": 21054571.37
+			,"Misses/sec": 0.00
+			,"Connection Errors/sec": 0.00
+			,"Connection Errors": 0
+			,"Latency": 0.213
+			,"Average Latency": 0.213
+			,"Accumulated Latency": 134807361
+			,"Min Latency": 0.048
+			,"Max Latency": 10.367
+			,"KB/sec": 2937952.91
+			,"KB/sec RX/TX": 2937952.91
+			,"KB/sec RX": 2220599.32
+			,"KB/sec TX": 717353.58
+			,"Time-Serie":{
+				"0":{
+					"Bytes RX": 2224440576
+					,"Bytes TX": 718593889
+					,"Count": 20596672
+					,"Average Latency": 0.219
+					,"Accumulated Latency": 4518914
+					,"Min Latency": 0.049
+					,"Max Latency": 10.336
+					,"p50.00": 0.199
+					,"p99.00": 0.943
+					,"p99.90": 2.447
+					}
+				,"1":{
+					"Bytes RX": 2282501376
+					,"Bytes TX": 737351373
+					,"Count": 21134272
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4491814
+					,"Min Latency": 0.049
+					,"Max Latency": 6.460
+					,"p50.00": 0.183
+					,"p99.00": 0.751
+					,"p99.90": 1.959
+					}
+				,"2":{
+					"Bytes RX": 2284573248
+					,"Bytes TX": 738019992
+					,"Count": 21153456
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4485866
+					,"Min Latency": 0.050
+					,"Max Latency": 5.203
+					,"p50.00": 0.167
+					,"p99.00": 0.751
+					,"p99.90": 2.143
+					}
+				,"3":{
+					"Bytes RX": 2289002112
+					,"Bytes TX": 739449949
+					,"Count": 21194464
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4478987
+					,"Min Latency": 0.050
+					,"Max Latency": 3.922
+					,"p50.00": 0.191
+					,"p99.00": 0.759
+					,"p99.90": 1.767
+					}
+				,"4":{
+					"Bytes RX": 2284785792
+					,"Bytes TX": 738089359
+					,"Count": 21155424
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4479250
+					,"Min Latency": 0.049
+					,"Max Latency": 6.172
+					,"p50.00": 0.191
+					,"p99.00": 0.719
+					,"p99.90": 1.551
+					}
+				,"5":{
+					"Bytes RX": 2292117696
+					,"Bytes TX": 740455854
+					,"Count": 21223312
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4472379
+					,"Min Latency": 0.049
+					,"Max Latency": 5.173
+					,"p50.00": 0.191
+					,"p99.00": 0.727
+					,"p99.90": 1.911
+					}
+				,"6":{
+					"Bytes RX": 2294220672
+					,"Bytes TX": 741140045
+					,"Count": 21242784
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4476856
+					,"Min Latency": 0.050
+					,"Max Latency": 4.788
+					,"p50.00": 0.183
+					,"p99.00": 0.775
+					,"p99.90": 1.863
+					}
+				,"7":{
+					"Bytes RX": 2276028288
+					,"Bytes TX": 735260307
+					,"Count": 21074336
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4494703
+					,"Min Latency": 0.048
+					,"Max Latency": 7.316
+					,"p50.00": 0.191
+					,"p99.00": 0.743
+					,"p99.90": 2.559
+					}
+				,"8":{
+					"Bytes RX": 2273920128
+					,"Bytes TX": 734581313
+					,"Count": 21054816
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4498246
+					,"Min Latency": 0.048
+					,"Max Latency": 5.185
+					,"p50.00": 0.199
+					,"p99.00": 0.807
+					,"p99.90": 1.367
+					}
+				,"9":{
+					"Bytes RX": 2264960448
+					,"Bytes TX": 731680381
+					,"Count": 20971856
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4499042
+					,"Min Latency": 0.049
+					,"Max Latency": 5.979
+					,"p50.00": 0.199
+					,"p99.00": 0.767
+					,"p99.90": 1.335
+					}
+				,"10":{
+					"Bytes RX": 2266584768
+					,"Bytes TX": 732207657
+					,"Count": 20986896
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4500570
+					,"Min Latency": 0.049
+					,"Max Latency": 4.960
+					,"p50.00": 0.175
+					,"p99.00": 0.695
+					,"p99.90": 1.591
+					}
+				,"11":{
+					"Bytes RX": 2266693632
+					,"Bytes TX": 732246947
+					,"Count": 20987904
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4498571
+					,"Min Latency": 0.049
+					,"Max Latency": 5.152
+					,"p50.00": 0.191
+					,"p99.00": 0.671
+					,"p99.90": 1.279
+					}
+				,"12":{
+					"Bytes RX": 2256268608
+					,"Bytes TX": 728875228
+					,"Count": 20891376
+					,"Average Latency": 0.216
+					,"Accumulated Latency": 4510280
+					,"Min Latency": 0.050
+					,"Max Latency": 3.014
+					,"p50.00": 0.183
+					,"p99.00": 0.711
+					,"p99.90": 1.423
+					}
+				,"13":{
+					"Bytes RX": 2293626240
+					,"Bytes TX": 740944262
+					,"Count": 21237280
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4476988
+					,"Min Latency": 0.050
+					,"Max Latency": 6.152
+					,"p50.00": 0.199
+					,"p99.00": 0.751
+					,"p99.90": 1.471
+					}
+				,"14":{
+					"Bytes RX": 2276157888
+					,"Bytes TX": 735300375
+					,"Count": 21075536
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4493755
+					,"Min Latency": 0.049
+					,"Max Latency": 6.179
+					,"p50.00": 0.191
+					,"p99.00": 0.703
+					,"p99.90": 1.607
+					}
+				,"15":{
+					"Bytes RX": 2267602560
+					,"Bytes TX": 732537773
+					,"Count": 20996320
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4506554
+					,"Min Latency": 0.048
+					,"Max Latency": 6.026
+					,"p50.00": 0.183
+					,"p99.00": 0.727
+					,"p99.90": 1.455
+					}
+				,"16":{
+					"Bytes RX": 2262682944
+					,"Bytes TX": 730947438
+					,"Count": 20950768
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4502873
+					,"Min Latency": 0.050
+					,"Max Latency": 6.257
+					,"p50.00": 0.175
+					,"p99.00": 0.695
+					,"p99.90": 1.423
+					}
+				,"17":{
+					"Bytes RX": 2288768832
+					,"Bytes TX": 739375469
+					,"Count": 21192304
+					,"Average Latency": 0.211
+					,"Accumulated Latency": 4479194
+					,"Min Latency": 0.049
+					,"Max Latency": 3.653
+					,"p50.00": 0.191
+					,"p99.00": 0.735
+					,"p99.90": 1.615
+					}
+				,"18":{
+					"Bytes RX": 2267443584
+					,"Bytes TX": 732485450
+					,"Count": 20994848
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4503016
+					,"Min Latency": 0.050
+					,"Max Latency": 6.456
+					,"p50.00": 0.191
+					,"p99.00": 0.807
+					,"p99.90": 2.207
+					}
+				,"19":{
+					"Bytes RX": 2284358976
+					,"Bytes TX": 737951363
+					,"Count": 21151472
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4486996
+					,"Min Latency": 0.049
+					,"Max Latency": 5.106
+					,"p50.00": 0.183
+					,"p99.00": 0.823
+					,"p99.90": 2.335
+					}
+				,"20":{
+					"Bytes RX": 2281896576
+					,"Bytes TX": 737154801
+					,"Count": 21128672
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4482142
+					,"Min Latency": 0.050
+					,"Max Latency": 4.559
+					,"p50.00": 0.159
+					,"p99.00": 0.695
+					,"p99.90": 1.655
+					}
+				,"21":{
+					"Bytes RX": 2276494848
+					,"Bytes TX": 735410754
+					,"Count": 21078656
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4491276
+					,"Min Latency": 0.048
+					,"Max Latency": 6.650
+					,"p50.00": 0.191
+					,"p99.00": 0.879
+					,"p99.90": 2.639
+					}
+				,"22":{
+					"Bytes RX": 2271098304
+					,"Bytes TX": 733667426
+					,"Count": 21028688
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4498113
+					,"Min Latency": 0.050
+					,"Max Latency": 7.165
+					,"p50.00": 0.167
+					,"p99.00": 0.711
+					,"p99.90": 1.575
+					}
+				,"23":{
+					"Bytes RX": 2285295552
+					,"Bytes TX": 738253313
+					,"Count": 21160144
+					,"Average Latency": 0.212
+					,"Accumulated Latency": 4484444
+					,"Min Latency": 0.048
+					,"Max Latency": 5.173
+					,"p50.00": 0.183
+					,"p99.00": 0.847
+					,"p99.90": 2.047
+					}
+				,"24":{
+					"Bytes RX": 2265924672
+					,"Bytes TX": 731994932
+					,"Count": 20980784
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4499756
+					,"Min Latency": 0.049
+					,"Max Latency": 5.176
+					,"p50.00": 0.183
+					,"p99.00": 0.703
+					,"p99.90": 1.671
+					}
+				,"25":{
+					"Bytes RX": 2275677504
+					,"Bytes TX": 735149328
+					,"Count": 21071088
+					,"Average Latency": 0.213
+					,"Accumulated Latency": 4487472
+					,"Min Latency": 0.049
+					,"Max Latency": 9.034
+					,"p50.00": 0.159
+					,"p99.00": 0.647
+					,"p99.90": 1.575
+					}
+				,"26":{
+					"Bytes RX": 2265153984
+					,"Bytes TX": 731746518
+					,"Count": 20973648
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4501927
+					,"Min Latency": 0.049
+					,"Max Latency": 4.975
+					,"p50.00": 0.191
+					,"p99.00": 0.743
+					,"p99.90": 1.735
+					}
+				,"27":{
+					"Bytes RX": 2264265792
+					,"Bytes TX": 731459558
+					,"Count": 20965424
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4505098
+					,"Min Latency": 0.049
+					,"Max Latency": 5.936
+					,"p50.00": 0.199
+					,"p99.00": 0.743
+					,"p99.90": 1.687
+					}
+				,"28":{
+					"Bytes RX": 2273023296
+					,"Bytes TX": 734287749
+					,"Count": 21046512
+					,"Average Latency": 0.214
+					,"Accumulated Latency": 4496515
+					,"Min Latency": 0.049
+					,"Max Latency": 6.136
+					,"p50.00": 0.183
+					,"p99.00": 0.759
+					,"p99.90": 2.399
+					}
+				,"29":{
+					"Bytes RX": 2261592576
+					,"Bytes TX": 730596292
+					,"Count": 20940672
+					,"Average Latency": 0.215
+					,"Accumulated Latency": 4503834
+					,"Min Latency": 0.048
+					,"Max Latency": 6.894
+					,"p50.00": 0.159
+					,"p99.00": 0.695
+					,"p99.90": 2.543
+					}
+				,"30":{
+					"Bytes RX": 518400
+					,"Bytes TX": 167508
+					,"Count": 4800
+					,"Average Latency": 0.399
+					,"Accumulated Latency": 1915
+					,"Min Latency": 0.057
+					,"Max Latency": 1.037
+					,"p50.00": 0.279
+					,"p99.00": 0.279
+					,"p99.90": 0.279
+					}
+				}
+			,"Percentile Latencies":{
+				"p50.00": 0.183
+				,"p99.00": 0.743
+				,"p99.90": 1.879
+				,"Histogram log format":{
+					"Compressed Histogram": "HISTFAAABAl4nC1RDUyVZRTmvN/33cu9lwsoII4Fu9Mo16yVQ5sN4xqps2Zqq7nM6qpLm21lW27mZh4z/kSg4Q+mGQ9/c5UuhsAEjR0hN41wYrpSJh0zA1zDQvoxjfWive/2nOec87zn2btz34c7U+Li3M64e8f8H4PjMLVrflzeb/cKIb0+BZ3njQyddfX2dQ8dbX6c+iaApi8TZM93yXzmbAY6jj2k7QencXN5pspPk+WPryZJ+ck0rb+Wxm196dzemYltl7Lw6deTpPevZJy+E9ae7hAXVgb5SleA60YC/Hd9CDvuBFGzKx6DrT5ubPK0+5IrVUdcPtbiau+fLo4OeHq71uPyUUd273N04EfDZR2GR1qMnW346DYHHx92MHjRyP4iow19pIdOkFY1E440Ea6eIPl8gDD0C6GskXR7OXH5Rv39TT65hgfXav8GvlVEqH5PDryiTYu09ylpmKN1uRh+UksW8p7F2DqXi3K4dbqUPag7suX2/bp7Gv/wiIxNl9GpciCLBzO0cbJWpeOjyXohQ0cycSNDNQ21KTqcjP4k7k3i1mStS5HqVOlJ1p/DXJEgO0O4HMRYkC+GuC2sHOZTQf0iwLXxOuyXK3786leN58IghuKl2c89Ph7zRD3p93TEk6s+LvDjAx/2ehh1ud3VZlePu7zV44set3i47EqFy/0OH3H0e0e7HFS70u2i1OXTDg45UungpsF2R4sdPungiiO1jowZ7jfcbfiMkV6jQwY1DkodjBpuMVxv5BMjuw3XGpw2OGe4027B4F/CLeJh4pvEBQbVhqsMlxi+QXyO5ALB4mWSa6TFBv+Q9JGcIz1M2kZymNBK+Jb0PEkXyVFiu7W9pPsJnxHbjR0n6bir2Ud6gLiUpIy0gPQgSSMBxCWkWwlbeLNuks2yi3gnoYCwXtZJjNfibVmHEuJCwkZ9B69jBdbwcqyx+IaslhW8kJfqS1iur2mMV8mLWKRP6zx9FjWERpJK4vfH3RrIDtFNWkwKkjqSYvtV0lLSCsImbNB3lUnWYyW/hS3CpKv4BVlp8VVdisWWrZZlWIaX5Xl5BlEswRJrkStz8RzP09kyi+dLnuTyTMnXBTpLZ/BM5HAeZiNfFmgecnSGPC4zOQc58oTN8/AoPyb5eFizkY0HdApnapakS5qmc4qkSipPlCRMkIlIsbVEmcgTNBFhDUtYQxLgoL0hTuQAAjYPcxhJ9s0ETdYQJ3Ci+BEPv3pwxWWL7LLPVnwa0KD44BNXXTZwYJSiSnDVqE3gsGHL2bNNnzrqhye+cSkTO0zRaCiSHrOclNjI3agmZndoBbDPxLEy1zp47NrccluzTAybKFMsFo2CYlE73ag7bh+NzImMN+96W2dQJJId+Q887Dy0"
+					}
+				}
+			}
+		,"CPU Stats":{
+			"1":{
+				"Main Thread": 0.01
+				,"Thread 0": 62.49
+				,"Thread 1": 68.05
+				,"Thread 2": 62.15
+				,"Thread 3": 66.68
+				,"Thread 4": 68.58
+				,"Thread 5": 64.98
+				,"Thread 6": 64.60
+				,"Thread 7": 64.75
+				,"Thread 8": 70.78
+				,"Thread 9": 71.31
+				,"Thread 10": 67.07
+				,"Thread 11": 68.41
+				,"Thread 12": 69.38
+				,"Thread 13": 65.58
+				,"Thread 14": 63.76
+				,"Thread 15": 64.71
+				,"Thread 16": 65.28
+				,"Thread 17": 66.64
+				,"Thread 18": 71.40
+				,"Thread 19": 69.94
+				,"Thread 20": 68.34
+				,"Thread 21": 67.45
+				,"Thread 22": 65.69
+				,"Thread 23": 67.74
+				,"Thread 24": 68.85
+				,"Thread 25": 66.09
+				,"Thread 26": 68.49
+				,"Thread 27": 70.47
+				,"Thread 28": 69.23
+				,"Thread 29": 65.58
+				,"Thread 30": 67.71
+				,"Thread 31": 65.92
+				,"Thread 32": 69.49
+				,"Thread 33": 66.90
+				,"Thread 34": 70.15
+				,"Thread 35": 65.61
+				,"Thread 36": 65.05
+				,"Thread 37": 65.73
+				,"Thread 38": 65.97
+				,"Thread 39": 67.94
+				,"Thread 40": 68.49
+				,"Thread 41": 64.32
+				,"Thread 42": 70.88
+				,"Thread 43": 67.01
+				,"Thread 44": 63.42
+				,"Thread 45": 67.30
+				,"Thread 46": 67.10
+				,"Thread 47": 68.18
+				,"Thread 48": 68.30
+				,"Thread 49": 63.87
+				,"Thread 50": 67.04
+				,"Thread 51": 66.05
+				,"Thread 52": 71.78
+				,"Thread 53": 69.30
+				,"Thread 54": 70.14
+				,"Thread 55": 64.82
+				,"Thread 56": 67.38
+				,"Thread 57": 69.43
+				,"Thread 58": 69.76
+				,"Thread 59": 67.57
+				}
+			,"2":{
+				"Main Thread": 0.01
+				,"Thread 0": 69.64
+				,"Thread 1": 71.19
+				,"Thread 2": 66.47
+				,"Thread 3": 69.55
+				,"Thread 4": 70.86
+				,"Thread 5": 68.15
+				,"Thread 6": 70.71
+				,"Thread 7": 70.96
+				,"Thread 8": 70.93
+				,"Thread 9": 69.44
+				,"Thread 10": 68.36
+				,"Thread 11": 69.95
+				,"Thread 12": 73.02
+				,"Thread 13": 69.77
+				,"Thread 14": 70.88
+				,"Thread 15": 71.06
+				,"Thread 16": 68.36
+				,"Thread 17": 71.87
+				,"Thread 18": 73.28
+				,"Thread 19": 70.44
+				,"Thread 20": 71.30
+				,"Thread 21": 72.35
+				,"Thread 22": 66.11
+				,"Thread 23": 70.24
+				,"Thread 24": 74.32
+				,"Thread 25": 69.65
+				,"Thread 26": 69.95
+				,"Thread 27": 72.90
+				,"Thread 28": 69.98
+				,"Thread 29": 72.99
+				,"Thread 30": 74.75
+				,"Thread 31": 70.08
+				,"Thread 32": 72.47
+				,"Thread 33": 68.49
+				,"Thread 34": 71.25
+				,"Thread 35": 69.05
+				,"Thread 36": 73.46
+				,"Thread 37": 69.70
+				,"Thread 38": 70.00
+				,"Thread 39": 71.73
+				,"Thread 40": 70.18
+				,"Thread 41": 67.47
+				,"Thread 42": 72.69
+				,"Thread 43": 71.80
+				,"Thread 44": 71.21
+				,"Thread 45": 70.95
+				,"Thread 46": 69.71
+				,"Thread 47": 74.30
+				,"Thread 48": 73.39
+				,"Thread 49": 67.62
+				,"Thread 50": 67.14
+				,"Thread 51": 70.98
+				,"Thread 52": 70.78
+				,"Thread 53": 73.43
+				,"Thread 54": 73.19
+				,"Thread 55": 66.80
+				,"Thread 56": 73.85
+				,"Thread 57": 73.52
+				,"Thread 58": 70.94
+				,"Thread 59": 73.09
+				}
+			,"3":{
+				"Main Thread": 0.01
+				,"Thread 0": 67.95
+				,"Thread 1": 71.23
+				,"Thread 2": 67.82
+				,"Thread 3": 71.71
+				,"Thread 4": 72.97
+				,"Thread 5": 71.59
+				,"Thread 6": 73.06
+				,"Thread 7": 70.72
+				,"Thread 8": 69.94
+				,"Thread 9": 69.40
+				,"Thread 10": 70.07
+				,"Thread 11": 70.20
+				,"Thread 12": 70.32
+				,"Thread 13": 72.78
+				,"Thread 14": 71.61
+				,"Thread 15": 69.48
+				,"Thread 16": 73.60
+				,"Thread 17": 70.88
+				,"Thread 18": 75.48
+				,"Thread 19": 71.92
+				,"Thread 20": 71.33
+				,"Thread 21": 70.24
+				,"Thread 22": 67.01
+				,"Thread 23": 68.11
+				,"Thread 24": 74.21
+				,"Thread 25": 72.10
+				,"Thread 26": 73.41
+				,"Thread 27": 70.08
+				,"Thread 28": 71.30
+				,"Thread 29": 72.58
+				,"Thread 30": 72.49
+				,"Thread 31": 73.66
+				,"Thread 32": 73.89
+				,"Thread 33": 70.63
+				,"Thread 34": 73.77
+				,"Thread 35": 73.01
+				,"Thread 36": 68.97
+				,"Thread 37": 72.76
+				,"Thread 38": 74.24
+				,"Thread 39": 69.47
+				,"Thread 40": 70.59
+				,"Thread 41": 73.88
+				,"Thread 42": 68.30
+				,"Thread 43": 73.06
+				,"Thread 44": 71.69
+				,"Thread 45": 73.04
+				,"Thread 46": 71.57
+				,"Thread 47": 75.10
+				,"Thread 48": 70.65
+				,"Thread 49": 71.15
+				,"Thread 50": 69.72
+				,"Thread 51": 69.58
+				,"Thread 52": 70.31
+				,"Thread 53": 71.81
+				,"Thread 54": 71.35
+				,"Thread 55": 70.59
+				,"Thread 56": 72.73
+				,"Thread 57": 73.21
+				,"Thread 58": 72.78
+				,"Thread 59": 72.87
+				}
+			,"4":{
+				"Main Thread": 0.01
+				,"Thread 0": 73.51
+				,"Thread 1": 69.01
+				,"Thread 2": 68.67
+				,"Thread 3": 72.37
+				,"Thread 4": 72.41
+				,"Thread 5": 70.24
+				,"Thread 6": 76.30
+				,"Thread 7": 72.26
+				,"Thread 8": 69.60
+				,"Thread 9": 71.76
+				,"Thread 10": 72.94
+				,"Thread 11": 75.91
+				,"Thread 12": 71.20
+				,"Thread 13": 73.36
+				,"Thread 14": 70.71
+				,"Thread 15": 74.02
+				,"Thread 16": 74.30
+				,"Thread 17": 70.35
+				,"Thread 18": 71.28
+				,"Thread 19": 73.82
+				,"Thread 20": 75.58
+				,"Thread 21": 73.42
+				,"Thread 22": 65.52
+				,"Thread 23": 68.42
+				,"Thread 24": 73.65
+				,"Thread 25": 74.16
+				,"Thread 26": 71.30
+				,"Thread 27": 75.57
+				,"Thread 28": 73.45
+				,"Thread 29": 76.78
+				,"Thread 30": 73.14
+				,"Thread 31": 72.17
+				,"Thread 32": 69.91
+				,"Thread 33": 67.66
+				,"Thread 34": 75.04
+				,"Thread 35": 69.61
+				,"Thread 36": 71.43
+				,"Thread 37": 73.87
+				,"Thread 38": 70.62
+				,"Thread 39": 70.17
+				,"Thread 40": 71.78
+				,"Thread 41": 75.19
+				,"Thread 42": 69.07
+				,"Thread 43": 72.03
+				,"Thread 44": 74.30
+				,"Thread 45": 70.81
+				,"Thread 46": 70.71
+				,"Thread 47": 74.41
+				,"Thread 48": 71.88
+				,"Thread 49": 72.02
+				,"Thread 50": 71.91
+				,"Thread 51": 74.00
+				,"Thread 52": 69.87
+				,"Thread 53": 74.43
+				,"Thread 54": 75.10
+				,"Thread 55": 70.29
+				,"Thread 56": 75.42
+				,"Thread 57": 73.12
+				,"Thread 58": 76.31
+				,"Thread 59": 74.56
+				}
+			,"5":{
+				"Main Thread": 0.01
+				,"Thread 0": 67.21
+				,"Thread 1": 69.41
+				,"Thread 2": 70.03
+				,"Thread 3": 72.37
+				,"Thread 4": 73.77
+				,"Thread 5": 71.74
+				,"Thread 6": 72.80
+				,"Thread 7": 72.75
+				,"Thread 8": 67.93
+				,"Thread 9": 73.39
+				,"Thread 10": 74.26
+				,"Thread 11": 72.02
+				,"Thread 12": 76.17
+				,"Thread 13": 71.58
+				,"Thread 14": 74.68
+				,"Thread 15": 68.97
+				,"Thread 16": 70.42
+				,"Thread 17": 72.38
+				,"Thread 18": 71.78
+				,"Thread 19": 72.63
+				,"Thread 20": 73.56
+				,"Thread 21": 72.19
+				,"Thread 22": 72.59
+				,"Thread 23": 71.20
+				,"Thread 24": 73.30
+				,"Thread 25": 75.35
+				,"Thread 26": 70.41
+				,"Thread 27": 76.84
+				,"Thread 28": 71.87
+				,"Thread 29": 73.53
+				,"Thread 30": 73.92
+				,"Thread 31": 68.63
+				,"Thread 32": 71.68
+				,"Thread 33": 72.72
+				,"Thread 34": 73.05
+				,"Thread 35": 70.10
+				,"Thread 36": 69.68
+				,"Thread 37": 73.74
+				,"Thread 38": 70.85
+				,"Thread 39": 75.49
+				,"Thread 40": 71.34
+				,"Thread 41": 71.87
+				,"Thread 42": 70.44
+				,"Thread 43": 72.98
+				,"Thread 44": 69.76
+				,"Thread 45": 76.40
+				,"Thread 46": 72.28
+				,"Thread 47": 72.78
+				,"Thread 48": 70.64
+				,"Thread 49": 71.74
+				,"Thread 50": 70.61
+				,"Thread 51": 74.33
+				,"Thread 52": 72.77
+				,"Thread 53": 70.70
+				,"Thread 54": 70.21
+				,"Thread 55": 71.15
+				,"Thread 56": 70.51
+				,"Thread 57": 76.70
+				,"Thread 58": 75.94
+				,"Thread 59": 74.78
+				}
+			,"6":{
+				"Main Thread": 0.01
+				,"Thread 0": 71.61
+				,"Thread 1": 75.07
+				,"Thread 2": 69.39
+				,"Thread 3": 73.05
+				,"Thread 4": 75.84
+				,"Thread 5": 72.98
+				,"Thread 6": 73.92
+				,"Thread 7": 70.85
+				,"Thread 8": 74.09
+				,"Thread 9": 71.37
+				,"Thread 10": 73.51
+				,"Thread 11": 73.72
+				,"Thread 12": 73.92
+				,"Thread 13": 72.46
+				,"Thread 14": 75.46
+				,"Thread 15": 71.06
+				,"Thread 16": 70.88
+				,"Thread 17": 71.70
+				,"Thread 18": 75.23
+				,"Thread 19": 77.69
+				,"Thread 20": 73.48
+				,"Thread 21": 71.04
+				,"Thread 22": 69.57
+				,"Thread 23": 71.69
+				,"Thread 24": 71.96
+				,"Thread 25": 73.81
+				,"Thread 26": 74.82
+				,"Thread 27": 77.44
+				,"Thread 28": 69.70
+				,"Thread 29": 76.07
+				,"Thread 30": 72.05
+				,"Thread 31": 69.60
+				,"Thread 32": 74.26
+				,"Thread 33": 75.08
+				,"Thread 34": 75.71
+				,"Thread 35": 75.49
+				,"Thread 36": 73.87
+				,"Thread 37": 73.93
+				,"Thread 38": 72.27
+				,"Thread 39": 74.08
+				,"Thread 40": 73.30
+				,"Thread 41": 74.38
+				,"Thread 42": 73.68
+				,"Thread 43": 76.17
+				,"Thread 44": 72.11
+				,"Thread 45": 72.70
+				,"Thread 46": 71.22
+				,"Thread 47": 73.49
+				,"Thread 48": 74.35
+				,"Thread 49": 71.27
+				,"Thread 50": 71.69
+				,"Thread 51": 71.88
+				,"Thread 52": 73.32
+				,"Thread 53": 75.40
+				,"Thread 54": 73.62
+				,"Thread 55": 75.10
+				,"Thread 56": 73.19
+				,"Thread 57": 71.75
+				,"Thread 58": 72.68
+				,"Thread 59": 73.44
+				}
+			,"7":{
+				"Main Thread": 0.01
+				,"Thread 0": 70.10
+				,"Thread 1": 72.80
+				,"Thread 2": 69.21
+				,"Thread 3": 73.93
+				,"Thread 4": 71.75
+				,"Thread 5": 73.30
+				,"Thread 6": 72.24
+				,"Thread 7": 74.15
+				,"Thread 8": 70.87
+				,"Thread 9": 72.58
+				,"Thread 10": 76.84
+				,"Thread 11": 73.40
+				,"Thread 12": 73.09
+				,"Thread 13": 73.62
+				,"Thread 14": 73.97
+				,"Thread 15": 70.86
+				,"Thread 16": 70.55
+				,"Thread 17": 71.43
+				,"Thread 18": 75.59
+				,"Thread 19": 75.18
+				,"Thread 20": 75.95
+				,"Thread 21": 73.03
+				,"Thread 22": 67.19
+				,"Thread 23": 73.77
+				,"Thread 24": 75.30
+				,"Thread 25": 69.27
+				,"Thread 26": 72.65
+				,"Thread 27": 70.27
+				,"Thread 28": 70.23
+				,"Thread 29": 71.33
+				,"Thread 30": 71.92
+				,"Thread 31": 73.25
+				,"Thread 32": 72.68
+				,"Thread 33": 71.83
+				,"Thread 34": 74.76
+				,"Thread 35": 69.39
+				,"Thread 36": 73.07
+				,"Thread 37": 72.47
+				,"Thread 38": 71.36
+				,"Thread 39": 68.40
+				,"Thread 40": 74.31
+				,"Thread 41": 70.75
+				,"Thread 42": 72.83
+				,"Thread 43": 75.67
+				,"Thread 44": 73.95
+				,"Thread 45": 70.31
+				,"Thread 46": 71.26
+				,"Thread 47": 75.05
+				,"Thread 48": 74.93
+				,"Thread 49": 71.83
+				,"Thread 50": 72.03
+				,"Thread 51": 71.85
+				,"Thread 52": 72.67
+				,"Thread 53": 74.01
+				,"Thread 54": 73.36
+				,"Thread 55": 70.14
+				,"Thread 56": 74.96
+				,"Thread 57": 70.79
+				,"Thread 58": 76.26
+				,"Thread 59": 78.59
+				}
+			,"8":{
+				"Main Thread": 0.01
+				,"Thread 0": 64.09
+				,"Thread 1": 68.63
+				,"Thread 2": 64.63
+				,"Thread 3": 70.82
+				,"Thread 4": 72.68
+				,"Thread 5": 71.24
+				,"Thread 6": 75.50
+				,"Thread 7": 70.70
+				,"Thread 8": 65.74
+				,"Thread 9": 73.29
+				,"Thread 10": 72.88
+				,"Thread 11": 71.99
+				,"Thread 12": 68.44
+				,"Thread 13": 69.79
+				,"Thread 14": 69.28
+				,"Thread 15": 69.55
+				,"Thread 16": 71.87
+				,"Thread 17": 71.01
+				,"Thread 18": 70.64
+				,"Thread 19": 73.70
+				,"Thread 20": 73.05
+				,"Thread 21": 70.78
+				,"Thread 22": 63.66
+				,"Thread 23": 67.33
+				,"Thread 24": 72.79
+				,"Thread 25": 68.27
+				,"Thread 26": 66.10
+				,"Thread 27": 68.35
+				,"Thread 28": 71.01
+				,"Thread 29": 73.88
+				,"Thread 30": 70.09
+				,"Thread 31": 70.79
+				,"Thread 32": 73.66
+				,"Thread 33": 71.14
+				,"Thread 34": 69.06
+				,"Thread 35": 68.27
+				,"Thread 36": 68.71
+				,"Thread 37": 76.44
+				,"Thread 38": 71.33
+				,"Thread 39": 73.07
+				,"Thread 40": 69.64
+				,"Thread 41": 67.88
+				,"Thread 42": 69.28
+				,"Thread 43": 72.12
+				,"Thread 44": 69.10
+				,"Thread 45": 69.09
+				,"Thread 46": 71.78
+				,"Thread 47": 72.85
+				,"Thread 48": 65.29
+				,"Thread 49": 70.25
+				,"Thread 50": 71.11
+				,"Thread 51": 66.82
+				,"Thread 52": 65.85
+				,"Thread 53": 72.84
+				,"Thread 54": 69.20
+				,"Thread 55": 70.91
+				,"Thread 56": 71.61
+				,"Thread 57": 74.40
+				,"Thread 58": 74.36
+				,"Thread 59": 72.09
+				}
+			,"9":{
+				"Main Thread": 0.01
+				,"Thread 0": 65.28
+				,"Thread 1": 64.89
+				,"Thread 2": 67.59
+				,"Thread 3": 69.47
+				,"Thread 4": 69.67
+				,"Thread 5": 73.03
+				,"Thread 6": 69.96
+				,"Thread 7": 66.07
+				,"Thread 8": 70.12
+				,"Thread 9": 71.51
+				,"Thread 10": 69.21
+				,"Thread 11": 67.43
+				,"Thread 12": 70.05
+				,"Thread 13": 66.92
+				,"Thread 14": 70.67
+				,"Thread 15": 66.31
+				,"Thread 16": 72.19
+				,"Thread 17": 69.34
+				,"Thread 18": 74.86
+				,"Thread 19": 72.93
+				,"Thread 20": 71.49
+				,"Thread 21": 71.52
+				,"Thread 22": 68.33
+				,"Thread 23": 66.93
+				,"Thread 24": 66.98
+				,"Thread 25": 74.48
+				,"Thread 26": 66.60
+				,"Thread 27": 66.55
+				,"Thread 28": 66.83
+				,"Thread 29": 73.45
+				,"Thread 30": 71.35
+				,"Thread 31": 71.63
+				,"Thread 32": 71.00
+				,"Thread 33": 70.21
+				,"Thread 34": 69.76
+				,"Thread 35": 70.75
+				,"Thread 36": 68.01
+				,"Thread 37": 68.77
+				,"Thread 38": 72.64
+				,"Thread 39": 71.22
+				,"Thread 40": 73.84
+				,"Thread 41": 69.33
+				,"Thread 42": 71.47
+				,"Thread 43": 66.64
+				,"Thread 44": 68.45
+				,"Thread 45": 71.21
+				,"Thread 46": 68.61
+				,"Thread 47": 71.49
+				,"Thread 48": 71.87
+				,"Thread 49": 69.32
+				,"Thread 50": 67.92
+				,"Thread 51": 72.43
+				,"Thread 52": 68.27
+				,"Thread 53": 69.52
+				,"Thread 54": 69.44
+				,"Thread 55": 67.79
+				,"Thread 56": 71.60
+				,"Thread 57": 68.75
+				,"Thread 58": 74.71
+				,"Thread 59": 73.92
+				}
+			,"10":{
+				"Main Thread": 0.02
+				,"Thread 0": 64.69
+				,"Thread 1": 68.74
+				,"Thread 2": 66.39
+				,"Thread 3": 70.45
+				,"Thread 4": 72.12
+				,"Thread 5": 65.88
+				,"Thread 6": 73.04
+				,"Thread 7": 68.74
+				,"Thread 8": 71.78
+				,"Thread 9": 68.33
+				,"Thread 10": 69.32
+				,"Thread 11": 71.89
+				,"Thread 12": 74.38
+				,"Thread 13": 68.85
+				,"Thread 14": 70.60
+				,"Thread 15": 65.90
+				,"Thread 16": 72.24
+				,"Thread 17": 68.11
+				,"Thread 18": 73.51
+				,"Thread 19": 70.91
+				,"Thread 20": 71.82
+				,"Thread 21": 72.52
+				,"Thread 22": 67.81
+				,"Thread 23": 69.58
+				,"Thread 24": 69.91
+				,"Thread 25": 70.84
+				,"Thread 26": 70.86
+				,"Thread 27": 72.73
+				,"Thread 28": 66.95
+				,"Thread 29": 66.85
+				,"Thread 30": 69.61
+				,"Thread 31": 68.33
+				,"Thread 32": 69.73
+				,"Thread 33": 65.52
+				,"Thread 34": 68.17
+				,"Thread 35": 68.21
+				,"Thread 36": 67.47
+				,"Thread 37": 70.82
+				,"Thread 38": 70.22
+				,"Thread 39": 68.67
+				,"Thread 40": 68.29
+				,"Thread 41": 65.35
+				,"Thread 42": 67.94
+				,"Thread 43": 72.05
+				,"Thread 44": 71.12
+				,"Thread 45": 72.09
+				,"Thread 46": 66.02
+				,"Thread 47": 70.33
+				,"Thread 48": 71.33
+				,"Thread 49": 65.36
+				,"Thread 50": 68.90
+				,"Thread 51": 73.35
+				,"Thread 52": 69.91
+				,"Thread 53": 70.99
+				,"Thread 54": 72.58
+				,"Thread 55": 68.54
+				,"Thread 56": 70.63
+				,"Thread 57": 69.59
+				,"Thread 58": 71.67
+				,"Thread 59": 70.07
+				}
+			,"11":{
+				"Main Thread": 0.01
+				,"Thread 0": 67.99
+				,"Thread 1": 70.62
+				,"Thread 2": 68.87
+				,"Thread 3": 66.27
+				,"Thread 4": 67.59
+				,"Thread 5": 70.65
+				,"Thread 6": 72.97
+				,"Thread 7": 69.63
+				,"Thread 8": 71.54
+				,"Thread 9": 65.49
+				,"Thread 10": 74.78
+				,"Thread 11": 68.79
+				,"Thread 12": 70.16
+				,"Thread 13": 67.49
+				,"Thread 14": 66.32
+				,"Thread 15": 67.68
+				,"Thread 16": 73.59
+				,"Thread 17": 69.45
+				,"Thread 18": 69.87
+				,"Thread 19": 70.55
+				,"Thread 20": 71.80
+				,"Thread 21": 69.56
+				,"Thread 22": 67.11
+				,"Thread 23": 70.23
+				,"Thread 24": 68.89
+				,"Thread 25": 67.94
+				,"Thread 26": 71.81
+				,"Thread 27": 67.83
+				,"Thread 28": 67.06
+				,"Thread 29": 71.24
+				,"Thread 30": 70.15
+				,"Thread 31": 72.98
+				,"Thread 32": 70.67
+				,"Thread 33": 69.22
+				,"Thread 34": 68.48
+				,"Thread 35": 68.08
+				,"Thread 36": 66.57
+				,"Thread 37": 69.83
+				,"Thread 38": 73.36
+				,"Thread 39": 67.35
+				,"Thread 40": 69.79
+				,"Thread 41": 67.48
+				,"Thread 42": 65.28
+				,"Thread 43": 67.93
+				,"Thread 44": 71.08
+				,"Thread 45": 67.34
+				,"Thread 46": 73.37
+				,"Thread 47": 70.63
+				,"Thread 48": 68.13
+				,"Thread 49": 69.86
+				,"Thread 50": 67.62
+				,"Thread 51": 72.80
+				,"Thread 52": 67.10
+				,"Thread 53": 72.37
+				,"Thread 54": 72.94
+				,"Thread 55": 65.59
+				,"Thread 56": 69.59
+				,"Thread 57": 70.67
+				,"Thread 58": 72.55
+				,"Thread 59": 69.58
+				}
+			,"12":{
+				"Main Thread": 0.01
+				,"Thread 0": 63.91
+				,"Thread 1": 70.15
+				,"Thread 2": 64.15
+				,"Thread 3": 68.23
+				,"Thread 4": 69.15
+				,"Thread 5": 70.73
+				,"Thread 6": 74.46
+				,"Thread 7": 70.90
+				,"Thread 8": 65.90
+				,"Thread 9": 67.95
+				,"Thread 10": 69.47
+				,"Thread 11": 74.34
+				,"Thread 12": 74.09
+				,"Thread 13": 69.46
+				,"Thread 14": 70.74
+				,"Thread 15": 70.13
+				,"Thread 16": 68.86
+				,"Thread 17": 70.88
+				,"Thread 18": 71.14
+				,"Thread 19": 70.16
+				,"Thread 20": 69.43
+				,"Thread 21": 67.13
+				,"Thread 22": 67.89
+				,"Thread 23": 70.87
+				,"Thread 24": 72.58
+				,"Thread 25": 71.89
+				,"Thread 26": 67.21
+				,"Thread 27": 69.36
+				,"Thread 28": 72.51
+				,"Thread 29": 70.24
+				,"Thread 30": 68.86
+				,"Thread 31": 67.94
+				,"Thread 32": 71.29
+				,"Thread 33": 70.23
+				,"Thread 34": 67.35
+				,"Thread 35": 67.48
+				,"Thread 36": 73.62
+				,"Thread 37": 69.34
+				,"Thread 38": 69.89
+				,"Thread 39": 68.18
+				,"Thread 40": 71.70
+				,"Thread 41": 68.44
+				,"Thread 42": 69.60
+				,"Thread 43": 71.24
+				,"Thread 44": 70.03
+				,"Thread 45": 70.20
+				,"Thread 46": 69.23
+				,"Thread 47": 69.86
+				,"Thread 48": 68.59
+				,"Thread 49": 65.54
+				,"Thread 50": 69.01
+				,"Thread 51": 67.08
+				,"Thread 52": 66.18
+				,"Thread 53": 72.60
+				,"Thread 54": 75.21
+				,"Thread 55": 66.97
+				,"Thread 56": 73.33
+				,"Thread 57": 68.08
+				,"Thread 58": 68.86
+				,"Thread 59": 74.18
+				}
+			,"13":{
+				"Main Thread": 0.02
+				,"Thread 0": 62.66
+				,"Thread 1": 67.39
+				,"Thread 2": 66.57
+				,"Thread 3": 72.67
+				,"Thread 4": 70.64
+				,"Thread 5": 72.20
+				,"Thread 6": 67.98
+				,"Thread 7": 66.58
+				,"Thread 8": 66.07
+				,"Thread 9": 67.75
+				,"Thread 10": 66.65
+				,"Thread 11": 69.58
+				,"Thread 12": 70.30
+				,"Thread 13": 68.14
+				,"Thread 14": 66.19
+				,"Thread 15": 66.59
+				,"Thread 16": 63.56
+				,"Thread 17": 63.77
+				,"Thread 18": 68.42
+				,"Thread 19": 68.98
+				,"Thread 20": 69.17
+				,"Thread 21": 72.48
+				,"Thread 22": 69.29
+				,"Thread 23": 68.56
+				,"Thread 24": 68.52
+				,"Thread 25": 67.07
+				,"Thread 26": 65.04
+				,"Thread 27": 67.37
+				,"Thread 28": 65.43
+				,"Thread 29": 72.40
+				,"Thread 30": 67.98
+				,"Thread 31": 66.78
+				,"Thread 32": 66.55
+				,"Thread 33": 68.39
+				,"Thread 34": 67.42
+				,"Thread 35": 68.98
+				,"Thread 36": 64.90
+				,"Thread 37": 66.63
+				,"Thread 38": 69.49
+				,"Thread 39": 70.45
+				,"Thread 40": 65.90
+				,"Thread 41": 70.81
+				,"Thread 42": 71.06
+				,"Thread 43": 74.45
+				,"Thread 44": 65.63
+				,"Thread 45": 68.14
+				,"Thread 46": 64.67
+				,"Thread 47": 68.48
+				,"Thread 48": 68.86
+				,"Thread 49": 67.78
+				,"Thread 50": 68.17
+				,"Thread 51": 67.74
+				,"Thread 52": 63.66
+				,"Thread 53": 69.61
+				,"Thread 54": 69.62
+				,"Thread 55": 65.79
+				,"Thread 56": 72.67
+				,"Thread 57": 67.35
+				,"Thread 58": 73.93
+				,"Thread 59": 74.04
+				}
+			,"14":{
+				"Main Thread": 0.01
+				,"Thread 0": 68.01
+				,"Thread 1": 71.86
+				,"Thread 2": 69.27
+				,"Thread 3": 67.51
+				,"Thread 4": 72.04
+				,"Thread 5": 72.49
+				,"Thread 6": 72.89
+				,"Thread 7": 69.29
+				,"Thread 8": 74.44
+				,"Thread 9": 72.59
+				,"Thread 10": 74.52
+				,"Thread 11": 69.27
+				,"Thread 12": 73.25
+				,"Thread 13": 71.08
+				,"Thread 14": 71.25
+				,"Thread 15": 73.08
+				,"Thread 16": 73.15
+				,"Thread 17": 76.20
+				,"Thread 18": 73.73
+				,"Thread 19": 75.36
+				,"Thread 20": 73.89
+				,"Thread 21": 74.82
+				,"Thread 22": 74.49
+				,"Thread 23": 75.08
+				,"Thread 24": 76.35
+				,"Thread 25": 74.94
+				,"Thread 26": 70.02
+				,"Thread 27": 72.63
+				,"Thread 28": 69.85
+				,"Thread 29": 76.93
+				,"Thread 30": 69.93
+				,"Thread 31": 70.39
+				,"Thread 32": 71.48
+				,"Thread 33": 76.63
+				,"Thread 34": 74.78
+				,"Thread 35": 74.57
+				,"Thread 36": 69.26
+				,"Thread 37": 74.43
+				,"Thread 38": 71.55
+				,"Thread 39": 70.32
+				,"Thread 40": 71.95
+				,"Thread 41": 75.45
+				,"Thread 42": 72.23
+				,"Thread 43": 72.31
+				,"Thread 44": 71.17
+				,"Thread 45": 74.38
+				,"Thread 46": 71.44
+				,"Thread 47": 72.45
+				,"Thread 48": 74.06
+				,"Thread 49": 69.43
+				,"Thread 50": 68.84
+				,"Thread 51": 76.40
+				,"Thread 52": 70.21
+				,"Thread 53": 71.85
+				,"Thread 54": 71.86
+				,"Thread 55": 68.78
+				,"Thread 56": 71.23
+				,"Thread 57": 76.90
+				,"Thread 58": 77.90
+				,"Thread 59": 74.87
+				}
+			,"15":{
+				"Main Thread": 0.02
+				,"Thread 0": 69.98
+				,"Thread 1": 66.60
+				,"Thread 2": 66.89
+				,"Thread 3": 68.95
+				,"Thread 4": 72.09
+				,"Thread 5": 69.50
+				,"Thread 6": 71.30
+				,"Thread 7": 69.81
+				,"Thread 8": 70.68
+				,"Thread 9": 72.13
+				,"Thread 10": 72.61
+				,"Thread 11": 69.60
+				,"Thread 12": 71.17
+				,"Thread 13": 69.96
+				,"Thread 14": 67.91
+				,"Thread 15": 68.28
+				,"Thread 16": 68.31
+				,"Thread 17": 68.21
+				,"Thread 18": 71.25
+				,"Thread 19": 69.63
+				,"Thread 20": 73.15
+				,"Thread 21": 70.41
+				,"Thread 22": 66.73
+				,"Thread 23": 69.15
+				,"Thread 24": 69.37
+				,"Thread 25": 73.60
+				,"Thread 26": 70.29
+				,"Thread 27": 75.47
+				,"Thread 28": 70.05
+				,"Thread 29": 76.42
+				,"Thread 30": 70.56
+				,"Thread 31": 70.10
+				,"Thread 32": 69.15
+				,"Thread 33": 68.08
+				,"Thread 34": 76.28
+				,"Thread 35": 69.70
+				,"Thread 36": 70.50
+				,"Thread 37": 73.05
+				,"Thread 38": 71.49
+				,"Thread 39": 68.40
+				,"Thread 40": 70.06
+				,"Thread 41": 69.72
+				,"Thread 42": 68.38
+				,"Thread 43": 70.81
+				,"Thread 44": 67.04
+				,"Thread 45": 72.23
+				,"Thread 46": 70.47
+				,"Thread 47": 67.36
+				,"Thread 48": 74.14
+				,"Thread 49": 72.17
+				,"Thread 50": 70.35
+				,"Thread 51": 68.78
+				,"Thread 52": 68.26
+				,"Thread 53": 73.01
+				,"Thread 54": 68.26
+				,"Thread 55": 66.41
+				,"Thread 56": 69.20
+				,"Thread 57": 70.22
+				,"Thread 58": 75.59
+				,"Thread 59": 75.07
+				}
+			,"16":{
+				"Main Thread": 0.01
+				,"Thread 0": 64.82
+				,"Thread 1": 69.32
+				,"Thread 2": 65.41
+				,"Thread 3": 68.71
+				,"Thread 4": 65.24
+				,"Thread 5": 69.03
+				,"Thread 6": 67.82
+				,"Thread 7": 68.94
+				,"Thread 8": 66.98
+				,"Thread 9": 68.03
+				,"Thread 10": 67.64
+				,"Thread 11": 74.63
+				,"Thread 12": 66.62
+				,"Thread 13": 72.24
+				,"Thread 14": 65.49
+				,"Thread 15": 68.80
+				,"Thread 16": 69.81
+				,"Thread 17": 71.35
+				,"Thread 18": 66.60
+				,"Thread 19": 69.06
+				,"Thread 20": 67.90
+				,"Thread 21": 70.79
+				,"Thread 22": 67.58
+				,"Thread 23": 69.46
+				,"Thread 24": 68.83
+				,"Thread 25": 70.09
+				,"Thread 26": 70.15
+				,"Thread 27": 72.71
+				,"Thread 28": 65.96
+				,"Thread 29": 68.05
+				,"Thread 30": 71.93
+				,"Thread 31": 68.17
+				,"Thread 32": 67.74
+				,"Thread 33": 70.68
+				,"Thread 34": 68.94
+				,"Thread 35": 69.19
+				,"Thread 36": 67.55
+				,"Thread 37": 71.94
+				,"Thread 38": 64.78
+				,"Thread 39": 67.06
+				,"Thread 40": 68.67
+				,"Thread 41": 71.56
+				,"Thread 42": 66.40
+				,"Thread 43": 71.16
+				,"Thread 44": 69.65
+				,"Thread 45": 71.90
+				,"Thread 46": 67.15
+				,"Thread 47": 71.26
+				,"Thread 48": 66.85
+				,"Thread 49": 67.89
+				,"Thread 50": 68.35
+				,"Thread 51": 68.90
+				,"Thread 52": 69.69
+				,"Thread 53": 69.31
+				,"Thread 54": 68.82
+				,"Thread 55": 64.92
+				,"Thread 56": 72.51
+				,"Thread 57": 66.38
+				,"Thread 58": 73.59
+				,"Thread 59": 68.20
+				}
+			,"17":{
+				"Main Thread": 0.01
+				,"Thread 0": 66.21
+				,"Thread 1": 69.83
+				,"Thread 2": 68.14
+				,"Thread 3": 64.97
+				,"Thread 4": 67.32
+				,"Thread 5": 69.33
+				,"Thread 6": 66.44
+				,"Thread 7": 68.46
+				,"Thread 8": 66.20
+				,"Thread 9": 71.53
+				,"Thread 10": 68.15
+				,"Thread 11": 75.77
+				,"Thread 12": 65.39
+				,"Thread 13": 70.00
+				,"Thread 14": 66.90
+				,"Thread 15": 66.24
+				,"Thread 16": 68.68
+				,"Thread 17": 70.57
+				,"Thread 18": 71.21
+				,"Thread 19": 73.94
+				,"Thread 20": 68.96
+				,"Thread 21": 67.04
+				,"Thread 22": 66.49
+				,"Thread 23": 65.16
+				,"Thread 24": 67.33
+				,"Thread 25": 70.45
+				,"Thread 26": 69.74
+				,"Thread 27": 72.05
+				,"Thread 28": 72.64
+				,"Thread 29": 69.61
+				,"Thread 30": 69.28
+				,"Thread 31": 65.15
+				,"Thread 32": 71.07
+				,"Thread 33": 69.35
+				,"Thread 34": 72.00
+				,"Thread 35": 66.74
+				,"Thread 36": 68.94
+				,"Thread 37": 72.04
+				,"Thread 38": 71.47
+				,"Thread 39": 67.61
+				,"Thread 40": 68.28
+				,"Thread 41": 68.96
+				,"Thread 42": 73.80
+				,"Thread 43": 70.14
+				,"Thread 44": 69.80
+				,"Thread 45": 67.69
+				,"Thread 46": 69.62
+				,"Thread 47": 71.83
+				,"Thread 48": 69.85
+				,"Thread 49": 68.68
+				,"Thread 50": 67.73
+				,"Thread 51": 70.40
+				,"Thread 52": 63.39
+				,"Thread 53": 70.40
+				,"Thread 54": 70.37
+				,"Thread 55": 69.51
+				,"Thread 56": 71.75
+				,"Thread 57": 70.29
+				,"Thread 58": 69.40
+				,"Thread 59": 70.55
+				}
+			,"18":{
+				"Main Thread": 0.01
+				,"Thread 0": 71.19
+				,"Thread 1": 74.46
+				,"Thread 2": 70.91
+				,"Thread 3": 69.57
+				,"Thread 4": 72.25
+				,"Thread 5": 73.58
+				,"Thread 6": 70.43
+				,"Thread 7": 75.83
+				,"Thread 8": 66.51
+				,"Thread 9": 72.14
+				,"Thread 10": 69.15
+				,"Thread 11": 69.89
+				,"Thread 12": 73.47
+				,"Thread 13": 70.46
+				,"Thread 14": 71.29
+				,"Thread 15": 71.80
+				,"Thread 16": 72.38
+				,"Thread 17": 70.50
+				,"Thread 18": 73.40
+				,"Thread 19": 76.54
+				,"Thread 20": 72.02
+				,"Thread 21": 75.65
+				,"Thread 22": 73.03
+				,"Thread 23": 71.93
+				,"Thread 24": 71.05
+				,"Thread 25": 72.85
+				,"Thread 26": 72.19
+				,"Thread 27": 76.57
+				,"Thread 28": 72.17
+				,"Thread 29": 75.28
+				,"Thread 30": 71.39
+				,"Thread 31": 68.36
+				,"Thread 32": 71.00
+				,"Thread 33": 73.20
+				,"Thread 34": 72.92
+				,"Thread 35": 72.07
+				,"Thread 36": 72.55
+				,"Thread 37": 71.26
+				,"Thread 38": 71.57
+				,"Thread 39": 74.58
+				,"Thread 40": 74.42
+				,"Thread 41": 72.18
+				,"Thread 42": 73.07
+				,"Thread 43": 71.94
+				,"Thread 44": 69.98
+				,"Thread 45": 71.37
+				,"Thread 46": 70.04
+				,"Thread 47": 74.47
+				,"Thread 48": 71.91
+				,"Thread 49": 73.16
+				,"Thread 50": 72.65
+				,"Thread 51": 69.17
+				,"Thread 52": 71.97
+				,"Thread 53": 70.43
+				,"Thread 54": 78.50
+				,"Thread 55": 68.69
+				,"Thread 56": 73.73
+				,"Thread 57": 73.35
+				,"Thread 58": 73.56
+				,"Thread 59": 76.84
+				}
+			,"19":{
+				"Main Thread": 0.01
+				,"Thread 0": 68.57
+				,"Thread 1": 72.10
+				,"Thread 2": 67.03
+				,"Thread 3": 69.62
+				,"Thread 4": 71.33
+				,"Thread 5": 69.34
+				,"Thread 6": 71.52
+				,"Thread 7": 69.72
+				,"Thread 8": 70.10
+				,"Thread 9": 67.20
+				,"Thread 10": 66.36
+				,"Thread 11": 70.03
+				,"Thread 12": 71.65
+				,"Thread 13": 67.39
+				,"Thread 14": 67.79
+				,"Thread 15": 70.54
+				,"Thread 16": 65.03
+				,"Thread 17": 68.69
+				,"Thread 18": 72.53
+				,"Thread 19": 72.52
+				,"Thread 20": 69.26
+				,"Thread 21": 70.66
+				,"Thread 22": 65.08
+				,"Thread 23": 67.34
+				,"Thread 24": 70.48
+				,"Thread 25": 71.99
+				,"Thread 26": 65.78
+				,"Thread 27": 71.39
+				,"Thread 28": 66.79
+				,"Thread 29": 70.42
+				,"Thread 30": 66.55
+				,"Thread 31": 67.69
+				,"Thread 32": 68.75
+				,"Thread 33": 72.75
+				,"Thread 34": 70.48
+				,"Thread 35": 67.56
+				,"Thread 36": 67.95
+				,"Thread 37": 67.61
+				,"Thread 38": 68.87
+				,"Thread 39": 70.65
+				,"Thread 40": 68.20
+				,"Thread 41": 69.36
+				,"Thread 42": 68.45
+				,"Thread 43": 73.10
+				,"Thread 44": 69.46
+				,"Thread 45": 70.82
+				,"Thread 46": 74.89
+				,"Thread 47": 73.20
+				,"Thread 48": 68.75
+				,"Thread 49": 67.41
+				,"Thread 50": 67.30
+				,"Thread 51": 69.66
+				,"Thread 52": 65.40
+				,"Thread 53": 70.16
+				,"Thread 54": 69.11
+				,"Thread 55": 64.41
+				,"Thread 56": 70.17
+				,"Thread 57": 72.48
+				,"Thread 58": 68.17
+				,"Thread 59": 70.64
+				}
+			,"20":{
+				"Main Thread": 0.01
+				,"Thread 0": 68.75
+				,"Thread 1": 69.86
+				,"Thread 2": 70.26
+				,"Thread 3": 72.86
+				,"Thread 4": 72.40
+				,"Thread 5": 68.16
+				,"Thread 6": 68.37
+				,"Thread 7": 69.25
+				,"Thread 8": 68.05
+				,"Thread 9": 70.21
+				,"Thread 10": 73.95
+				,"Thread 11": 73.17
+				,"Thread 12": 69.44
+				,"Thread 13": 73.79
+				,"Thread 14": 69.68
+				,"Thread 15": 71.45
+				,"Thread 16": 72.67
+				,"Thread 17": 70.91
+				,"Thread 18": 74.08
+				,"Thread 19": 70.44
+				,"Thread 20": 70.91
+				,"Thread 21": 73.24
+				,"Thread 22": 70.93
+				,"Thread 23": 69.94
+				,"Thread 24": 70.59
+				,"Thread 25": 74.14
+				,"Thread 26": 69.60
+				,"Thread 27": 72.29
+				,"Thread 28": 75.45
+				,"Thread 29": 71.47
+				,"Thread 30": 70.52
+				,"Thread 31": 69.65
+				,"Thread 32": 73.61
+				,"Thread 33": 69.61
+				,"Thread 34": 72.05
+				,"Thread 35": 70.24
+				,"Thread 36": 75.00
+				,"Thread 37": 74.53
+				,"Thread 38": 71.59
+				,"Thread 39": 71.51
+				,"Thread 40": 73.56
+				,"Thread 41": 68.34
+				,"Thread 42": 71.41
+				,"Thread 43": 71.99
+				,"Thread 44": 73.12
+				,"Thread 45": 69.51
+				,"Thread 46": 72.56
+				,"Thread 47": 70.54
+				,"Thread 48": 75.87
+				,"Thread 49": 69.08
+				,"Thread 50": 71.19
+				,"Thread 51": 69.04
+				,"Thread 52": 69.83
+				,"Thread 53": 69.70
+				,"Thread 54": 70.71
+				,"Thread 55": 70.27
+				,"Thread 56": 75.43
+				,"Thread 57": 68.00
+				,"Thread 58": 72.64
+				,"Thread 59": 74.23
+				}
+			,"21":{
+				"Main Thread": 0.01
+				,"Thread 0": 71.96
+				,"Thread 1": 69.37
+				,"Thread 2": 69.24
+				,"Thread 3": 73.93
+				,"Thread 4": 70.41
+				,"Thread 5": 74.26
+				,"Thread 6": 74.72
+				,"Thread 7": 69.69
+				,"Thread 8": 70.57
+				,"Thread 9": 72.81
+				,"Thread 10": 75.08
+				,"Thread 11": 77.60
+				,"Thread 12": 69.86
+				,"Thread 13": 70.26
+				,"Thread 14": 70.00
+				,"Thread 15": 70.99
+				,"Thread 16": 73.91
+				,"Thread 17": 75.43
+				,"Thread 18": 76.31
+				,"Thread 19": 72.09
+				,"Thread 20": 71.40
+				,"Thread 21": 70.70
+				,"Thread 22": 73.19
+				,"Thread 23": 68.34
+				,"Thread 24": 72.38
+				,"Thread 25": 68.78
+				,"Thread 26": 71.36
+				,"Thread 27": 68.93
+				,"Thread 28": 69.57
+				,"Thread 29": 73.45
+				,"Thread 30": 70.05
+				,"Thread 31": 73.10
+				,"Thread 32": 72.13
+				,"Thread 33": 71.11
+				,"Thread 34": 70.95
+				,"Thread 35": 72.28
+				,"Thread 36": 68.40
+				,"Thread 37": 74.48
+				,"Thread 38": 73.72
+				,"Thread 39": 70.48
+				,"Thread 40": 71.52
+				,"Thread 41": 71.15
+				,"Thread 42": 73.22
+				,"Thread 43": 72.54
+				,"Thread 44": 69.22
+				,"Thread 45": 73.92
+				,"Thread 46": 72.45
+				,"Thread 47": 74.18
+				,"Thread 48": 69.70
+				,"Thread 49": 75.60
+				,"Thread 50": 70.20
+				,"Thread 51": 70.34
+				,"Thread 52": 69.31
+				,"Thread 53": 74.83
+				,"Thread 54": 73.00
+				,"Thread 55": 69.58
+				,"Thread 56": 71.65
+				,"Thread 57": 72.68
+				,"Thread 58": 70.59
+				,"Thread 59": 74.95
+				}
+			,"22":{
+				"Main Thread": 0.01
+				,"Thread 0": 70.70
+				,"Thread 1": 67.89
+				,"Thread 2": 69.06
+				,"Thread 3": 73.21
+				,"Thread 4": 70.76
+				,"Thread 5": 70.56
+				,"Thread 6": 72.05
+				,"Thread 7": 69.40
+				,"Thread 8": 70.26
+				,"Thread 9": 68.57
+				,"Thread 10": 73.11
+				,"Thread 11": 71.19
+				,"Thread 12": 70.81
+				,"Thread 13": 70.46
+				,"Thread 14": 70.96
+				,"Thread 15": 67.14
+				,"Thread 16": 71.36
+				,"Thread 17": 71.79
+				,"Thread 18": 72.53
+				,"Thread 19": 67.80
+				,"Thread 20": 71.50
+				,"Thread 21": 67.21
+				,"Thread 22": 71.86
+				,"Thread 23": 69.83
+				,"Thread 24": 74.11
+				,"Thread 25": 69.36
+				,"Thread 26": 73.75
+				,"Thread 27": 70.65
+				,"Thread 28": 70.96
+				,"Thread 29": 73.19
+				,"Thread 30": 74.93
+				,"Thread 31": 69.37
+				,"Thread 32": 73.40
+				,"Thread 33": 67.84
+				,"Thread 34": 69.28
+				,"Thread 35": 68.92
+				,"Thread 36": 66.64
+				,"Thread 37": 68.57
+				,"Thread 38": 72.90
+				,"Thread 39": 68.60
+				,"Thread 40": 70.40
+				,"Thread 41": 70.04
+				,"Thread 42": 69.12
+				,"Thread 43": 70.68
+				,"Thread 44": 75.62
+				,"Thread 45": 73.10
+				,"Thread 46": 69.89
+				,"Thread 47": 70.97
+				,"Thread 48": 68.58
+				,"Thread 49": 72.19
+				,"Thread 50": 69.75
+				,"Thread 51": 70.79
+				,"Thread 52": 72.28
+				,"Thread 53": 71.93
+				,"Thread 54": 72.65
+				,"Thread 55": 71.41
+				,"Thread 56": 68.58
+				,"Thread 57": 70.28
+				,"Thread 58": 70.95
+				,"Thread 59": 71.83
+				}
+			,"23":{
+				"Main Thread": 0.02
+				,"Thread 0": 66.95
+				,"Thread 1": 68.90
+				,"Thread 2": 66.23
+				,"Thread 3": 73.78
+				,"Thread 4": 71.47
+				,"Thread 5": 70.04
+				,"Thread 6": 74.14
+				,"Thread 7": 69.54
+				,"Thread 8": 70.07
+				,"Thread 9": 70.57
+				,"Thread 10": 71.66
+				,"Thread 11": 67.37
+				,"Thread 12": 70.28
+				,"Thread 13": 72.34
+				,"Thread 14": 67.56
+				,"Thread 15": 70.18
+				,"Thread 16": 69.95
+				,"Thread 17": 68.90
+				,"Thread 18": 66.28
+				,"Thread 19": 69.00
+				,"Thread 20": 69.56
+				,"Thread 21": 69.88
+				,"Thread 22": 71.29
+				,"Thread 23": 72.49
+				,"Thread 24": 73.60
+				,"Thread 25": 71.66
+				,"Thread 26": 66.52
+				,"Thread 27": 67.58
+				,"Thread 28": 69.80
+				,"Thread 29": 67.73
+				,"Thread 30": 68.66
+				,"Thread 31": 71.07
+				,"Thread 32": 73.73
+				,"Thread 33": 67.86
+				,"Thread 34": 70.92
+				,"Thread 35": 69.16
+				,"Thread 36": 71.09
+				,"Thread 37": 68.52
+				,"Thread 38": 74.58
+				,"Thread 39": 67.94
+				,"Thread 40": 68.85
+				,"Thread 41": 68.86
+				,"Thread 42": 70.19
+				,"Thread 43": 71.77
+				,"Thread 44": 69.82
+				,"Thread 45": 71.37
+				,"Thread 46": 70.39
+				,"Thread 47": 67.50
+				,"Thread 48": 69.09
+				,"Thread 49": 67.15
+				,"Thread 50": 72.22
+				,"Thread 51": 72.16
+				,"Thread 52": 69.13
+				,"Thread 53": 70.81
+				,"Thread 54": 69.51
+				,"Thread 55": 66.76
+				,"Thread 56": 72.67
+				,"Thread 57": 69.36
+				,"Thread 58": 72.11
+				,"Thread 59": 72.02
+				}
+			,"24":{
+				"Main Thread": 0.01
+				,"Thread 0": 70.73
+				,"Thread 1": 68.66
+				,"Thread 2": 68.82
+				,"Thread 3": 74.53
+				,"Thread 4": 75.61
+				,"Thread 5": 74.13
+				,"Thread 6": 74.41
+				,"Thread 7": 72.67
+				,"Thread 8": 68.72
+				,"Thread 9": 72.44
+				,"Thread 10": 71.45
+				,"Thread 11": 74.85
+				,"Thread 12": 72.58
+				,"Thread 13": 72.90
+				,"Thread 14": 66.87
+				,"Thread 15": 69.06
+				,"Thread 16": 75.44
+				,"Thread 17": 70.67
+				,"Thread 18": 72.27
+				,"Thread 19": 73.71
+				,"Thread 20": 71.78
+				,"Thread 21": 70.71
+				,"Thread 22": 67.70
+				,"Thread 23": 70.82
+				,"Thread 24": 68.93
+				,"Thread 25": 72.21
+				,"Thread 26": 71.78
+				,"Thread 27": 70.21
+				,"Thread 28": 72.03
+				,"Thread 29": 74.21
+				,"Thread 30": 72.26
+				,"Thread 31": 73.67
+				,"Thread 32": 71.63
+				,"Thread 33": 73.76
+				,"Thread 34": 71.30
+				,"Thread 35": 69.25
+				,"Thread 36": 70.83
+				,"Thread 37": 73.66
+				,"Thread 38": 73.28
+				,"Thread 39": 70.24
+				,"Thread 40": 72.90
+				,"Thread 41": 68.99
+				,"Thread 42": 69.14
+				,"Thread 43": 71.32
+				,"Thread 44": 72.09
+				,"Thread 45": 69.06
+				,"Thread 46": 70.23
+				,"Thread 47": 72.66
+				,"Thread 48": 73.65
+				,"Thread 49": 68.67
+				,"Thread 50": 70.75
+				,"Thread 51": 69.45
+				,"Thread 52": 69.19
+				,"Thread 53": 72.65
+				,"Thread 54": 72.91
+				,"Thread 55": 71.05
+				,"Thread 56": 73.26
+				,"Thread 57": 70.96
+				,"Thread 58": 74.77
+				,"Thread 59": 71.26
+				}
+			,"25":{
+				"Main Thread": 0.01
+				,"Thread 0": 66.91
+				,"Thread 1": 70.74
+				,"Thread 2": 66.45
+				,"Thread 3": 72.05
+				,"Thread 4": 70.83
+				,"Thread 5": 69.86
+				,"Thread 6": 67.92
+				,"Thread 7": 67.81
+				,"Thread 8": 68.31
+				,"Thread 9": 68.84
+				,"Thread 10": 68.01
+				,"Thread 11": 72.02
+				,"Thread 12": 68.86
+				,"Thread 13": 69.79
+				,"Thread 14": 68.88
+				,"Thread 15": 68.44
+				,"Thread 16": 73.71
+				,"Thread 17": 72.05
+				,"Thread 18": 72.20
+				,"Thread 19": 72.32
+				,"Thread 20": 69.23
+				,"Thread 21": 67.80
+				,"Thread 22": 68.70
+				,"Thread 23": 64.94
+				,"Thread 24": 71.43
+				,"Thread 25": 70.21
+				,"Thread 26": 71.69
+				,"Thread 27": 70.20
+				,"Thread 28": 70.28
+				,"Thread 29": 68.41
+				,"Thread 30": 68.78
+				,"Thread 31": 66.24
+				,"Thread 32": 67.69
+				,"Thread 33": 70.37
+				,"Thread 34": 69.68
+				,"Thread 35": 69.34
+				,"Thread 36": 70.47
+				,"Thread 37": 67.73
+				,"Thread 38": 74.06
+				,"Thread 39": 67.37
+				,"Thread 40": 69.31
+				,"Thread 41": 72.08
+				,"Thread 42": 67.92
+				,"Thread 43": 69.22
+				,"Thread 44": 70.25
+				,"Thread 45": 72.10
+				,"Thread 46": 69.37
+				,"Thread 47": 72.00
+				,"Thread 48": 67.32
+				,"Thread 49": 70.17
+				,"Thread 50": 69.63
+				,"Thread 51": 66.65
+				,"Thread 52": 70.95
+				,"Thread 53": 71.93
+				,"Thread 54": 70.49
+				,"Thread 55": 69.25
+				,"Thread 56": 69.57
+				,"Thread 57": 72.31
+				,"Thread 58": 69.18
+				,"Thread 59": 73.26
+				}
+			,"26":{
+				"Main Thread": 0.02
+				,"Thread 0": 67.54
+				,"Thread 1": 73.73
+				,"Thread 2": 68.86
+				,"Thread 3": 69.27
+				,"Thread 4": 67.36
+				,"Thread 5": 66.98
+				,"Thread 6": 74.04
+				,"Thread 7": 69.56
+				,"Thread 8": 66.94
+				,"Thread 9": 69.94
+				,"Thread 10": 68.76
+				,"Thread 11": 71.36
+				,"Thread 12": 69.66
+				,"Thread 13": 69.32
+				,"Thread 14": 71.81
+				,"Thread 15": 72.60
+				,"Thread 16": 70.94
+				,"Thread 17": 71.46
+				,"Thread 18": 67.61
+				,"Thread 19": 72.64
+				,"Thread 20": 72.77
+				,"Thread 21": 74.81
+				,"Thread 22": 67.68
+				,"Thread 23": 66.70
+				,"Thread 24": 68.68
+				,"Thread 25": 70.05
+				,"Thread 26": 72.37
+				,"Thread 27": 76.07
+				,"Thread 28": 73.97
+				,"Thread 29": 74.74
+				,"Thread 30": 69.22
+				,"Thread 31": 69.66
+				,"Thread 32": 68.83
+				,"Thread 33": 69.42
+				,"Thread 34": 72.12
+				,"Thread 35": 73.17
+				,"Thread 36": 72.23
+				,"Thread 37": 72.87
+				,"Thread 38": 73.82
+				,"Thread 39": 72.83
+				,"Thread 40": 73.84
+				,"Thread 41": 67.95
+				,"Thread 42": 72.12
+				,"Thread 43": 74.29
+				,"Thread 44": 68.14
+				,"Thread 45": 71.08
+				,"Thread 46": 70.71
+				,"Thread 47": 76.36
+				,"Thread 48": 68.86
+				,"Thread 49": 71.78
+				,"Thread 50": 66.58
+				,"Thread 51": 70.76
+				,"Thread 52": 74.21
+				,"Thread 53": 75.03
+				,"Thread 54": 72.96
+				,"Thread 55": 69.07
+				,"Thread 56": 71.24
+				,"Thread 57": 71.72
+				,"Thread 58": 70.84
+				,"Thread 59": 72.05
+				}
+			,"27":{
+				"Main Thread": 0.01
+				,"Thread 0": 67.50
+				,"Thread 1": 66.41
+				,"Thread 2": 68.27
+				,"Thread 3": 71.31
+				,"Thread 4": 67.81
+				,"Thread 5": 67.66
+				,"Thread 6": 69.28
+				,"Thread 7": 68.05
+				,"Thread 8": 64.68
+				,"Thread 9": 66.01
+				,"Thread 10": 67.70
+				,"Thread 11": 71.86
+				,"Thread 12": 67.64
+				,"Thread 13": 69.36
+				,"Thread 14": 69.32
+				,"Thread 15": 67.39
+				,"Thread 16": 73.76
+				,"Thread 17": 72.39
+				,"Thread 18": 69.05
+				,"Thread 19": 70.70
+				,"Thread 20": 70.51
+				,"Thread 21": 66.41
+				,"Thread 22": 69.32
+				,"Thread 23": 69.46
+				,"Thread 24": 72.14
+				,"Thread 25": 72.73
+				,"Thread 26": 70.07
+				,"Thread 27": 69.74
+				,"Thread 28": 68.40
+				,"Thread 29": 72.10
+				,"Thread 30": 71.04
+				,"Thread 31": 70.63
+				,"Thread 32": 71.00
+				,"Thread 33": 68.67
+				,"Thread 34": 70.30
+				,"Thread 35": 67.76
+				,"Thread 36": 66.42
+				,"Thread 37": 69.93
+				,"Thread 38": 73.55
+				,"Thread 39": 70.71
+				,"Thread 40": 70.05
+				,"Thread 41": 67.91
+				,"Thread 42": 67.23
+				,"Thread 43": 69.00
+				,"Thread 44": 71.31
+				,"Thread 45": 71.97
+				,"Thread 46": 66.85
+				,"Thread 47": 69.67
+				,"Thread 48": 70.78
+				,"Thread 49": 67.34
+				,"Thread 50": 72.56
+				,"Thread 51": 69.00
+				,"Thread 52": 65.25
+				,"Thread 53": 68.72
+				,"Thread 54": 71.64
+				,"Thread 55": 65.90
+				,"Thread 56": 69.85
+				,"Thread 57": 67.85
+				,"Thread 58": 68.58
+				,"Thread 59": 71.47
+				}
+			,"28":{
+				"Main Thread": 0.02
+				,"Thread 0": 67.80
+				,"Thread 1": 70.88
+				,"Thread 2": 68.67
+				,"Thread 3": 72.34
+				,"Thread 4": 66.05
+				,"Thread 5": 69.50
+				,"Thread 6": 66.57
+				,"Thread 7": 66.54
+				,"Thread 8": 69.17
+				,"Thread 9": 71.69
+				,"Thread 10": 68.95
+				,"Thread 11": 66.34
+				,"Thread 12": 69.54
+				,"Thread 13": 66.34
+				,"Thread 14": 69.52
+				,"Thread 15": 70.52
+				,"Thread 16": 70.31
+				,"Thread 17": 70.33
+				,"Thread 18": 73.10
+				,"Thread 19": 72.39
+				,"Thread 20": 68.14
+				,"Thread 21": 70.53
+				,"Thread 22": 66.60
+				,"Thread 23": 67.70
+				,"Thread 24": 72.79
+				,"Thread 25": 69.24
+				,"Thread 26": 66.11
+				,"Thread 27": 67.21
+				,"Thread 28": 68.68
+				,"Thread 29": 69.07
+				,"Thread 30": 66.72
+				,"Thread 31": 65.20
+				,"Thread 32": 73.21
+				,"Thread 33": 71.57
+				,"Thread 34": 66.64
+				,"Thread 35": 68.75
+				,"Thread 36": 68.62
+				,"Thread 37": 70.65
+				,"Thread 38": 73.24
+				,"Thread 39": 69.35
+				,"Thread 40": 69.95
+				,"Thread 41": 71.07
+				,"Thread 42": 65.82
+				,"Thread 43": 71.54
+				,"Thread 44": 70.36
+				,"Thread 45": 70.78
+				,"Thread 46": 68.97
+				,"Thread 47": 69.49
+				,"Thread 48": 69.91
+				,"Thread 49": 65.53
+				,"Thread 50": 70.77
+				,"Thread 51": 70.72
+				,"Thread 52": 65.74
+				,"Thread 53": 67.01
+				,"Thread 54": 66.77
+				,"Thread 55": 67.87
+				,"Thread 56": 66.79
+				,"Thread 57": 65.58
+				,"Thread 58": 66.53
+				,"Thread 59": 72.95
+				}
+			,"29":{
+				"Main Thread": 0.01
+				,"Thread 0": 67.04
+				,"Thread 1": 65.46
+				,"Thread 2": 68.19
+				,"Thread 3": 71.49
+				,"Thread 4": 68.77
+				,"Thread 5": 68.64
+				,"Thread 6": 68.05
+				,"Thread 7": 74.95
+				,"Thread 8": 70.55
+				,"Thread 9": 67.74
+				,"Thread 10": 69.52
+				,"Thread 11": 70.61
+				,"Thread 12": 70.50
+				,"Thread 13": 70.91
+				,"Thread 14": 70.74
+				,"Thread 15": 70.19
+				,"Thread 16": 70.31
+				,"Thread 17": 71.27
+				,"Thread 18": 71.83
+				,"Thread 19": 71.06
+				,"Thread 20": 77.94
+				,"Thread 21": 65.73
+				,"Thread 22": 67.74
+				,"Thread 23": 66.90
+				,"Thread 24": 69.64
+				,"Thread 25": 74.35
+				,"Thread 26": 68.54
+				,"Thread 27": 67.32
+				,"Thread 28": 70.61
+				,"Thread 29": 73.97
+				,"Thread 30": 66.14
+				,"Thread 31": 70.81
+				,"Thread 32": 69.42
+				,"Thread 33": 69.87
+				,"Thread 34": 69.91
+				,"Thread 35": 68.29
+				,"Thread 36": 73.52
+				,"Thread 37": 70.69
+				,"Thread 38": 73.68
+				,"Thread 39": 71.54
+				,"Thread 40": 66.76
+				,"Thread 41": 67.67
+				,"Thread 42": 69.22
+				,"Thread 43": 72.64
+				,"Thread 44": 65.21
+				,"Thread 45": 72.81
+				,"Thread 46": 68.74
+				,"Thread 47": 74.29
+				,"Thread 48": 66.76
+				,"Thread 49": 66.65
+				,"Thread 50": 66.44
+				,"Thread 51": 67.99
+				,"Thread 52": 70.89
+				,"Thread 53": 75.80
+				,"Thread 54": 69.33
+				,"Thread 55": 72.37
+				,"Thread 56": 71.78
+				,"Thread 57": 70.41
+				,"Thread 58": 71.15
+				,"Thread 59": 70.23
+				}
+			,"30":{
+				"Main Thread": 0.01
+				,"Thread 0": 0.00
+				,"Thread 1": 0.00
+				,"Thread 2": 0.00
+				,"Thread 3": 0.00
+				,"Thread 4": 0.00
+				,"Thread 5": 0.00
+				,"Thread 6": 0.00
+				,"Thread 7": 0.00
+				,"Thread 8": 0.00
+				,"Thread 9": 0.00
+				,"Thread 10": 0.00
+				,"Thread 11": 0.00
+				,"Thread 12": 0.00
+				,"Thread 13": 0.00
+				,"Thread 14": 0.00
+				,"Thread 15": 0.00
+				,"Thread 16": 0.00
+				,"Thread 17": 0.00
+				,"Thread 18": 0.00
+				,"Thread 19": 0.00
+				,"Thread 20": 0.00
+				,"Thread 21": 0.00
+				,"Thread 22": 0.00
+				,"Thread 23": 0.00
+				,"Thread 24": 0.00
+				,"Thread 25": 0.00
+				,"Thread 26": 0.00
+				,"Thread 27": 0.00
+				,"Thread 28": 0.00
+				,"Thread 29": 0.00
+				,"Thread 30": 0.00
+				,"Thread 31": 0.00
+				,"Thread 32": 0.00
+				,"Thread 33": 0.00
+				,"Thread 34": 0.00
+				,"Thread 35": 0.00
+				,"Thread 36": 0.00
+				,"Thread 37": 0.00
+				,"Thread 38": 0.00
+				,"Thread 39": 0.00
+				,"Thread 40": 0.00
+				,"Thread 41": 0.00
+				,"Thread 42": 0.00
+				,"Thread 43": 0.00
+				,"Thread 44": 0.00
+				,"Thread 45": 0.00
+				,"Thread 46": 0.00
+				,"Thread 47": 0.00
+				,"Thread 48": 0.00
+				,"Thread 49": 0.00
+				,"Thread 50": 0.00
+				,"Thread 51": 0.00
+				,"Thread 52": 0.00
+				,"Thread 53": 0.00
+				,"Thread 54": 0.00
+				,"Thread 55": 0.00
+				,"Thread 56": 0.00
+				,"Thread 57": 0.00
+				,"Thread 58": 0.00
+				,"Thread 59": 0.00
+				}
+			}
+		}
+	}

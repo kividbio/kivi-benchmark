@@ -1,0 +1,25 @@
+Writing results to stdout
+[RUN #1] Preparing benchmark client...
+[RUN #1] Launching threads now...
+[RUN #1 14%,   1 secs] 60 threads  5 conns:     1364329 ops, 1362353 (avg: 1362353) ops/sec, 192.14MB/sec (avg: 192.14MB/sec),  3.51 (avg:  3.51) msec latency[RUN #1 26%,   2 secs] 60 threads  5 conns:     2632224 ops, 1267699 (avg: 1315057) ops/sec, 178.79MB/sec (avg: 185.47MB/sec),  3.78 (avg:  3.64) msec latency[RUN #1 39%,   3 secs] 60 threads  5 conns:     3934720 ops, 1302288 (avg: 1310803) ops/sec, 183.67MB/sec (avg: 184.87MB/sec),  3.69 (avg:  3.66) msec latency[RUN #1 51%,   4 secs] 60 threads  5 conns:     5120176 ops, 1185280 (avg: 1279432) ops/sec, 167.17MB/sec (avg: 180.45MB/sec),  4.04 (avg:  3.75) msec latency[RUN #1 62%,   5 secs] 60 threads  5 conns:     6189456 ops, 1069114 (avg: 1237379) ops/sec, 150.79MB/sec (avg: 174.52MB/sec),  4.48 (avg:  3.87) msec latency[RUN #1 76%,   6 secs] 60 threads  5 conns:     7565920 ops, 1376254 (avg: 1260520) ops/sec, 194.11MB/sec (avg: 177.78MB/sec),  3.49 (avg:  3.80) msec latency[RUN #1 89%,   7 secs] 60 threads  5 conns:     8921109 ops, 1354981 (avg: 1274012) ops/sec, 191.11MB/sec (avg: 179.68MB/sec),  3.54 (avg:  3.76) msec latency[RUN #1 100%,   7 secs]  0 threads  5 conns:    10000200 ops, 1354981 (avg: 1254411) ops/sec, 191.11MB/sec (avg: 176.92MB/sec),  3.54 (avg:  3.82) msec latency
+
+
+CPU Utilization Summary
+  Total CPU time:   14.507s  (user 9.787s, sys 4.720s)
+  Wall time:        7.979s
+  Cores used:       1.818   (avg 3.0% across 60 worker threads)
+  Peak utilization: 198.3%
+setting requests to 33334
+60        Threads
+5         Connections per thread
+33334     Requests per client
+
+
+ALL STATS
+============================================================================================================================
+Type         Ops/sec     Hits/sec   Misses/sec    Avg. Latency     p50 Latency     p99 Latency   p99.9 Latency       KB/sec 
+----------------------------------------------------------------------------------------------------------------------------
+Sets      1254099.57          ---          ---         3.82239         4.15900         6.97500        16.19100    181120.50 
+Gets            0.00         0.00         0.00             ---             ---             ---             ---         0.00 
+Waits           0.00          ---          ---             ---             ---             ---             ---          --- 
+Totals    1254099.57         0.00         0.00         3.82239         4.15900         6.97500        16.19100    181120.50 

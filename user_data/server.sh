@@ -8,14 +8,14 @@ export DEBIAN_FRONTEND=noninteractive
 exec > >(tee /var/log/user-data-server.log) 2>&1
 
 # ── Pinned versions: change these, and the README, together ─────────────────
-KIVIDB_VERSION="v1.0.5"
-DRAGONFLY_VERSION="v1.37.0"
+KIVIDB_VERSION="v1.2.0"
+DRAGONFLY_VERSION="v2.0.2"
 # Redis comes from Redis's own apt repository (Ubuntu's is years older). Set
 # REDIS_APT_VERSION to an exact version string from `apt-cache policy redis`
 # to pin it; empty installs the newest there. The version actually installed
 # is printed below and recorded by start-server.sh in ~/logs/launch.log.
 REDIS_APT_VERSION=""
-KIVIDB_RELEASES_BASE="https://releases.kividb.io"
+KIVIDB_RELEASES_BASE="https://github.com/kividbio/kividb/releases/download"
 BENCHMARK_REPO="https://github.com/kividbio/kivi-benchmark"
 # ─────────────────────────────────────────────────────────────────────────────
 
