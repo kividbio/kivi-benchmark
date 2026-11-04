@@ -1,0 +1,25 @@
+Writing results to stdout
+[RUN #1] Preparing benchmark client...
+[RUN #1] Launching threads now...
+[RUN #1 24%,   1 secs] 60 threads  5 conns:     2353936 ops, 2350687 (avg: 2350687) ops/sec, 331.53MB/sec (avg: 331.53MB/sec),  2.03 (avg:  2.03) msec latency[RUN #1 43%,   2 secs] 60 threads  5 conns:     4317472 ops, 1963237 (avg: 2157081) ops/sec, 276.89MB/sec (avg: 304.23MB/sec),  2.44 (avg:  2.22) msec latency[RUN #1 63%,   3 secs] 60 threads  5 conns:     6277709 ops, 1959941 (avg: 2091394) ops/sec, 276.43MB/sec (avg: 294.96MB/sec),  2.44 (avg:  2.29) msec latency[RUN #1 82%,   4 secs] 60 threads  5 conns:     8245824 ops, 1967809 (avg: 2060508) ops/sec, 277.54MB/sec (avg: 290.61MB/sec),  2.44 (avg:  2.32) msec latency[RUN #1 100%,   4 secs]  0 threads  5 conns:    10000200 ops, 1967809 (avg: 2314508) ops/sec, 277.54MB/sec (avg: 326.43MB/sec),  2.44 (avg:  2.07) msec latency
+
+
+CPU Utilization Summary
+  Total CPU time:   14.480s  (user 9.871s, sys 4.610s)
+  Wall time:        4.403s
+  Cores used:       3.289   (avg 5.5% across 60 worker threads)
+  Peak utilization: 339.0%
+setting requests to 33334
+60        Threads
+5         Connections per thread
+33334     Requests per client
+
+
+ALL STATS
+============================================================================================================================
+Type         Ops/sec     Hits/sec   Misses/sec    Avg. Latency     p50 Latency     p99 Latency   p99.9 Latency       KB/sec 
+----------------------------------------------------------------------------------------------------------------------------
+Sets      2310096.00          ---          ---         2.07033         1.51900        10.11100        14.01500    333630.41 
+Gets            0.00         0.00         0.00             ---             ---             ---             ---         0.00 
+Waits           0.00          ---          ---             ---             ---             ---             ---          --- 
+Totals    2310096.00         0.00         0.00         2.07033         1.51900        10.11100        14.01500    333630.41 

@@ -1,0 +1,4 @@
+label=redis-cluster-r2 server=172.31.74.19 port=7000 mode=cluster
+sizes=100 pipelines=1 16 ratios=1:0 0:1 duration=30 keys=10000000 threads=60
+memtier_benchmark v=2.5.2 sha=f3ff1793:0 bits=64 libevent=2.1.12-stable openssl=OpenSSL 3.0.2 15 Mar 2022 prometheus=yes
+2026-11-04T05:49:38Z

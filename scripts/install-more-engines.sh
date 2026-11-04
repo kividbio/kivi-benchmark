@@ -8,7 +8,7 @@ set -euo pipefail
 
 VALKEY_VERSION="9.1.2"
 KEYDB_VERSION="v6.3.4"
-GARNET_VERSION="v2.2.1"
+GARNET_VERSION="v2.2.5"
 DOTNET_CHANNEL="10.0"
 
 ARCH=$(uname -m)
